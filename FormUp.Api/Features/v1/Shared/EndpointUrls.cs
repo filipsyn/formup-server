@@ -9,7 +9,7 @@ namespace FormUp.Api.Features.v1.Shared;
 ///     Endpoint URLs are typically in following format:
 ///     <c>[host url]/api/[version]/[controller]</c>
 /// </remarks>
-internal static class EndpointUrLs
+internal static class EndpointUrls
 {
     private const string Version = "v1";
 
