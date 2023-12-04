@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Example_123"
+      MSSQL_SA_PASSWORD: "Example_321"
+    image: mcr.microsoft.com/azure-sql-edge
+    ports:
+      - "1433:1433"
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P example_123 -Q 'SELECT 1' || exit 1" ]
+      interval: 10s
+      retries: 10
+      timeout: 3s     
