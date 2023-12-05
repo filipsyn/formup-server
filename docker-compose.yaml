@@ -8,8 +8,13 @@ services:
     ports:
       - "1433:1433"
     restart: always
+    volumes:
+        - "./data-mssql:/var/opt/mssql/data"
     healthcheck:
       test: [ "CMD-SHELL", "/opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P Example_123 -Q 'SELECT 1' || exit 1" ]
       interval: 10s
       retries: 10
-      timeout: 3s     
+      timeout: 3s
+      
+volumes: 
+  db:
