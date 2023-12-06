@@ -1,8 +1,16 @@
+using FormUp.Api.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Database") ??
+                         throw new InvalidOperationException("Connection string to database was not found"));
+});
 
 builder.Services.AddSwaggerGen(options =>
 {
