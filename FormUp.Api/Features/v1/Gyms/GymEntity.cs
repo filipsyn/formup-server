@@ -1,4 +1,3 @@
-using FormUp.Api.Common.Models;
 using FormUp.Api.Common.Persistence;
 
 namespace FormUp.Api.Features.v1.Gyms;
@@ -16,5 +15,5 @@ public class GymEntity : BaseEntity
     /// <summary>
     ///     Coordinates of gym.
     /// </summary>
-    public Geolocation? Location { get; set; }
+    public GeolocationEntity? Location { get; set; }
 }
