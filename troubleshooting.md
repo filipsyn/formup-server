@@ -37,3 +37,6 @@ dotnet run
 ```shell
 docker-compose down
 ```
+
+## Troubleshooting
+Some of the common problems and their solutions are described on the [troubleshooting page](Docs/Troubleshooting.md).
