@@ -5,11 +5,21 @@ namespace FormUp.Api.Features.v1.Gyms;
 
 [ApiController]
 [Route(EndpointUrls.Gyms.GroupUrl)]
-public class GymsController: ControllerBase
+public class GymsController : ControllerBase
 {
-    [HttpGet(EndpointUrls.Gyms.GetAll)]
-    public IActionResult Get()
+    private readonly IGymsService _gymsService;
+
+    public GymsController(IGymsService gymsService)
     {
-        return Ok("Hello world");
+        _gymsService = gymsService ?? throw new ArgumentNullException(nameof(gymsService));
+    }
+
+    [HttpGet(EndpointUrls.Gyms.GetAll)]
+    public async Task<IActionResult> GetAll(
+        [FromQuery] int take = Constants.List.DefaultPageSize,
+        [FromQuery] int skip = Constants.List.DefaultSkip,
+        CancellationToken cancellationToken = default)
+    {
+        return Ok(await _gymsService.Get(skip, take, cancellationToken));
     }
 }
