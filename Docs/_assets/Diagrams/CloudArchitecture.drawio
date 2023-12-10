@@ -1,0 +1,35 @@
+<mxfile host="Electron" modified="2023-12-10T12:28:44.400Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.1 Chrome/112.0.5615.87 Electron/24.1.2 Safari/537.36" etag="pi6ux3ImXwfy5BR44QdN" version="21.2.1" type="device">
+  <diagram name="Stránka-1" id="biVRrYFRVZDEKaPUebvr">
+    <mxGraphModel dx="1687" dy="1200" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aSHlrG5ibaCxmme7rwO7-6" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;dashed=1;" edge="1" parent="1" source="aSHlrG5ibaCxmme7rwO7-1" target="aSHlrG5ibaCxmme7rwO7-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aSHlrG5ibaCxmme7rwO7-7" value="communicates with" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" vertex="1" connectable="0" parent="aSHlrG5ibaCxmme7rwO7-6">
+          <mxGeometry x="0.3862" y="-4" relative="1" as="geometry">
+            <mxPoint x="-77" y="-6" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aSHlrG5ibaCxmme7rwO7-1" value="&lt;b&gt;FormUp API&lt;br&gt;&lt;/b&gt;@ App Service" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/app_services/App_Services.svg;" vertex="1" parent="1">
+          <mxGeometry x="33" y="307" width="64" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="aSHlrG5ibaCxmme7rwO7-4" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=12;startSize=8;endSize=8;dashed=1;" edge="1" parent="1" source="aSHlrG5ibaCxmme7rwO7-2" target="aSHlrG5ibaCxmme7rwO7-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aSHlrG5ibaCxmme7rwO7-5" value="hosts" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" vertex="1" connectable="0" parent="aSHlrG5ibaCxmme7rwO7-4">
+          <mxGeometry x="0.3704" y="2" relative="1" as="geometry">
+            <mxPoint x="-5" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aSHlrG5ibaCxmme7rwO7-2" value="&lt;b&gt;FormUp Database Server&lt;/b&gt;&lt;br&gt;@ SQL Server" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/SQL_Server.svg;" vertex="1" parent="1">
+          <mxGeometry x="465" y="110" width="68" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="aSHlrG5ibaCxmme7rwO7-3" value="&lt;b&gt;Form Up Database&lt;/b&gt;&lt;br&gt;@ SQL Database" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/databases/SQL_Database.svg;" vertex="1" parent="1">
+          <mxGeometry x="475" y="307" width="48" height="64" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

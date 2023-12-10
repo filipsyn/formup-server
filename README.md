@@ -1,5 +1,4 @@
-FormUp Server
--------------
+# FormUp Server
 
 ## About project
 
@@ -37,6 +36,9 @@ dotnet run
 ```shell
 docker-compose down
 ```
+
+## Deployment
+More information about application deployment can be found on [deployment documentation](Docs/Deployment.md) page.
 
 ## Troubleshooting
 Some of the common problems and their solutions are described on the [troubleshooting page](Docs/Troubleshooting.md).
