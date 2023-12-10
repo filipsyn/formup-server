@@ -1,3 +1,4 @@
+using FormUp.Api.Common.Config;
 using FormUp.Api.Features.v1.Shared;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,5 +22,16 @@ public class GymsController : ControllerBase
         CancellationToken cancellationToken = default)
     {
         return Ok(await _gymsService.Get(skip, take, cancellationToken));
+    }
+
+    [HttpGet(EndpointUrls.Gyms.GetById)]
+    public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
+    {
+        var result = await _gymsService.Get(id, cancellationToken);
+
+        return result.Match<IActionResult>(
+            Ok,
+            NotFound
+        );
     }
 }

@@ -30,5 +30,7 @@ internal static class EndpointUrls
         ///     URL for <see cref="GymsController.Get" /> method
         /// </summary>
         public const string GetAll = "";
+
+        public const string GetById = "{id:guid}";
     }
 }
