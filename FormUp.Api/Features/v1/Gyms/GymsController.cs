@@ -1,5 +1,9 @@
+using ErrorOr;
+
 using FormUp.Api.Common.Config;
 using FormUp.Api.Features.v1.Shared;
+using FormUp.Contracts.v1.Gyms;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace FormUp.Api.Features.v1.Gyms;
@@ -16,6 +20,7 @@ public class GymsController : ControllerBase
     }
 
     [HttpGet(EndpointUrls.Gyms.GetAll)]
+    [ProducesResponseType<IEnumerable<GymInfo>>(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll(
         [FromQuery] int take = Constants.List.DefaultPageSize,
         [FromQuery] int skip = Constants.List.DefaultSkip,
@@ -25,9 +30,11 @@ public class GymsController : ControllerBase
     }
 
     [HttpGet(EndpointUrls.Gyms.GetById)]
+    [ProducesResponseType<GymInfo>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
     {
-        var result = await _gymsService.Get(id, cancellationToken);
+        ErrorOr<GymInfo> result = await _gymsService.Get(id, cancellationToken);
 
         return result.Match<IActionResult>(
             Ok,
