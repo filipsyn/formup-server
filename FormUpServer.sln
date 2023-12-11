@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormUp.Api", "FormUp.Api\Fo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{58091827-3F45-4DEF-A235-248F6B5B6CFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormUp.Contracts", "FormUp.Contracts\FormUp.Contracts.csproj", "{786A6706-9C0B-4BBF-A3F3-BA81654529FB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,8 +16,13 @@ Global
 		{B5FB4CBE-91BC-42E9-BDEB-5843C871B815}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5FB4CBE-91BC-42E9-BDEB-5843C871B815}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5FB4CBE-91BC-42E9-BDEB-5843C871B815}.Release|Any CPU.Build.0 = Release|Any CPU
+		{786A6706-9C0B-4BBF-A3F3-BA81654529FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{786A6706-9C0B-4BBF-A3F3-BA81654529FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{786A6706-9C0B-4BBF-A3F3-BA81654529FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{786A6706-9C0B-4BBF-A3F3-BA81654529FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B5FB4CBE-91BC-42E9-BDEB-5843C871B815} = {58091827-3F45-4DEF-A235-248F6B5B6CFB}
+		{786A6706-9C0B-4BBF-A3F3-BA81654529FB} = {58091827-3F45-4DEF-A235-248F6B5B6CFB}
 	EndGlobalSection
 EndGlobal
