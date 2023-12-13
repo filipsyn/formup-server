@@ -1,6 +1,5 @@
-using ErrorOr;
-
 using FormUp.Api.Common.Config;
+using FormUp.Api.Common.Extensions;
 using FormUp.Api.Common.Models;
 using FormUp.Api.Features.v1.Shared;
 using FormUp.Contracts.v1.Gyms;
@@ -22,24 +21,24 @@ public class GymsController : ControllerBase
 
     [HttpGet(EndpointUrls.Gyms.GetAll)]
     [ProducesResponseType<ApiResponse<IList<GymInfo>>>(StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAll(
+    public async Task<IResult> GetAll(
         [FromQuery] int take = Constants.List.DefaultPageSize,
         [FromQuery] int skip = Constants.List.DefaultSkip,
         CancellationToken cancellationToken = default)
     {
-        return Ok(await _gymsService.Get(skip, take, cancellationToken));
+        return Results.Ok(await _gymsService.Get(skip, take, cancellationToken));
     }
 
     [HttpGet(EndpointUrls.Gyms.GetById)]
     [ProducesResponseType<ApiResponse<GymInfo>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> Get(Guid id, CancellationToken cancellationToken)
+    public async Task<IResult> Get(Guid id, CancellationToken cancellationToken)
     {
-        ErrorOr<ApiResponse<GymInfo>> result = await _gymsService.Get(id, cancellationToken);
+        var result = await _gymsService.Get(id, cancellationToken);
 
-        return result.Match<IActionResult>(
-            Ok,
-            NotFound
+        return result.MatchFirst(
+            Results.Ok,
+            error => error.ToResponse()
         );
     }
 }
