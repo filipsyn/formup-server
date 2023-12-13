@@ -1,4 +1,7 @@
+using FormUp.Api.Common.Middleware;
 using FormUp.Api.Data;
+using FormUp.Api.Features.v1.Gyms;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -17,17 +20,20 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1",
         new OpenApiInfo
         {
-            Title = "FormUp", Version = "v1",
+            Title = "FormUp",
+            Version = "v1",
             Description =
                 "Server-side application to store information about workouts, gyms and fit lifestyle in general.",
-            Contact = new OpenApiContact
-            {
-                Url = new Uri("https://github.com/filipsyn/formup-server")
-            }
+            Contact = new OpenApiContact { Url = new Uri("https://github.com/filipsyn/formup-server") }
         });
 });
 
+builder.Services.AddScoped<IGymsService, GymsService>();
+
 builder.Services.AddControllers();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
@@ -42,5 +48,7 @@ app.UseSwaggerUI(options =>
 app.UseHttpsRedirection();
 
 app.MapControllers();
+
+app.UseExceptionHandler();
 
 app.Run();

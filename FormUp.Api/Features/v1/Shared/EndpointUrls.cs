@@ -7,13 +7,13 @@ namespace FormUp.Api.Features.v1.Shared;
 /// </summary>
 /// <remarks>
 ///     Endpoint URLs are typically in following format:
-///     <c>[host url]/api/[version]/[controller]</c>
+///     <c>[host url]/[version]/[controller]</c>
 /// </remarks>
 internal static class EndpointUrls
 {
     private const string Version = "v1";
 
-    private const string Prefix = $"/api/{Version}";
+    private const string Prefix = $"/{Version}";
 
 
     /// <summary>
@@ -27,8 +27,10 @@ internal static class EndpointUrls
         public const string GroupUrl = $"{Prefix}/gyms";
 
         /// <summary>
-        ///     URL for <see cref="GymsController.Get" /> method
+        ///     URL for <see cref="GymsController.GetById" /> method
         /// </summary>
-        public const string GetAll = "";
+        public const string Get = "";
+
+        public const string GetById = "{id:guid}";
     }
 }
