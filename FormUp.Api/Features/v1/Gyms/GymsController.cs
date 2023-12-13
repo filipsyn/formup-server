@@ -34,7 +34,7 @@ public class GymsController : ControllerBase
     [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
     public async Task<IResult> Get(Guid id, CancellationToken cancellationToken)
     {
-        var result = await _gymsService.Get(id, cancellationToken);
+        var result = await _gymsService.GetById(id, cancellationToken);
 
         return result.MatchFirst(
             Results.Ok,

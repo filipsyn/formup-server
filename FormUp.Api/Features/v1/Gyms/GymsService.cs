@@ -45,7 +45,7 @@ internal class GymsService : IGymsService
     }
 
     /// <inheritdoc />
-    public async Task<ErrorOr<ApiResponse<GymInfo>>> Get(Guid id, CancellationToken cancellationToken = default)
+    public async Task<ErrorOr<ApiResponse<GymInfo>>> GetById(Guid id, CancellationToken cancellationToken = default)
     {
         var gym = await _context.Gyms
             .Include(g => g.Location)

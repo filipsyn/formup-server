@@ -24,5 +24,5 @@ public interface IGymsService
         CancellationToken cancellationToken = default);
 
     /// <summary>Retrieves a specific <see cref="GymInfo" /> by its <see cref="GymEntity.Id" />.</summary>
-    public Task<ErrorOr<ApiResponse<GymInfo>>> Get(Guid id, CancellationToken cancellationToken = default);
+    public Task<ErrorOr<ApiResponse<GymInfo>>> GetById(Guid id, CancellationToken cancellationToken = default);
 }
