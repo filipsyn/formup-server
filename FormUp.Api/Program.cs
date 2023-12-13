@@ -5,6 +5,8 @@ using FormUp.Api.Features.v1.Gyms;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -35,7 +37,15 @@ builder.Services.AddControllers();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
+builder.Host.UseSerilog((context, configuration) =>
+{
+    configuration.ReadFrom.Configuration(context.Configuration);
+    configuration.WriteTo.Console();
+});
+
 var app = builder.Build();
+
+app.UseSerilogRequestLogging();
 
 app.UseSwagger();
 
