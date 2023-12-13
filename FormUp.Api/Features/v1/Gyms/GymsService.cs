@@ -40,7 +40,7 @@ internal class GymsService : IGymsService
 
         return ApiResponse<IList<GymInfo>>.Ok(
             gyms,
-            "Gyms were successfully retrieved",
+            "Gyms were successfully retrieved.",
             new ResponseMetaData(gyms.Count, take, count));
     }
 
@@ -56,6 +56,6 @@ internal class GymsService : IGymsService
             return GymErrors.NotFound(id);
         }
 
-        return ApiResponse<GymInfo>.Ok(gym.ToGymInfo(), "Gym was successfully retrieved");
+        return ApiResponse<GymInfo>.Ok(gym.ToGymInfo(), "Gym was successfully retrieved.");
     }
 }

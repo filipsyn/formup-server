@@ -8,7 +8,7 @@ public static class GymErrors
     {
         return Error.NotFound(
             "GymErrors:NotFound",
-            $"Gym with Id {id} was not found"
+            $"Gym with Id {id} was not found."
         );
     }
 }
