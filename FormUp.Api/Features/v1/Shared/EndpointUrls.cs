@@ -27,9 +27,9 @@ internal static class EndpointUrls
         public const string GroupUrl = $"{Prefix}/gyms";
 
         /// <summary>
-        ///     URL for <see cref="GymsController.Get" /> method
+        ///     URL for <see cref="GymsController.GetById" /> method
         /// </summary>
-        public const string GetAll = "";
+        public const string Get = "";
 
         public const string GetById = "{id:guid}";
     }

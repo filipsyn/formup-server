@@ -19,9 +19,9 @@ public class GymsController : ControllerBase
         _gymsService = gymsService ?? throw new ArgumentNullException(nameof(gymsService));
     }
 
-    [HttpGet(EndpointUrls.Gyms.GetAll)]
+    [HttpGet(EndpointUrls.Gyms.Get)]
     [ProducesResponseType<ApiResponse<IList<GymInfo>>>(StatusCodes.Status200OK)]
-    public async Task<IResult> GetAll(
+    public async Task<IResult> Get(
         [FromQuery] int take = Constants.List.DefaultPageSize,
         [FromQuery] int skip = Constants.List.DefaultSkip,
         CancellationToken cancellationToken = default)
@@ -32,7 +32,7 @@ public class GymsController : ControllerBase
     [HttpGet(EndpointUrls.Gyms.GetById)]
     [ProducesResponseType<ApiResponse<GymInfo>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
-    public async Task<IResult> Get(Guid id, CancellationToken cancellationToken)
+    public async Task<IResult> GetById(Guid id, CancellationToken cancellationToken)
     {
         var result = await _gymsService.GetById(id, cancellationToken);
 
