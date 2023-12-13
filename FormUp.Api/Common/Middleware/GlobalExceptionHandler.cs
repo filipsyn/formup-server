@@ -6,6 +6,13 @@ namespace FormUp.Api.Common.Middleware;
 
 public class GlobalExceptionHandler : IExceptionHandler
 {
+    private readonly ILogger<GlobalExceptionHandler> _logger;
+
+    public GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
+    {
+        _logger = logger;
+    }
+
     public async ValueTask<bool> TryHandleAsync(
         HttpContext httpContext,
         Exception exception,
@@ -18,6 +25,8 @@ public class GlobalExceptionHandler : IExceptionHandler
 
         httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
         await httpContext.Response.WriteAsJsonAsync(responseBody, cancellationToken);
+
+        _logger.LogError("Unhandled exception: {@Exception}", exception);
 
         return true;
     }
