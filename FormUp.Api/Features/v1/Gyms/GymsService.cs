@@ -2,6 +2,7 @@ using ErrorOr;
 
 using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Extensions.Mapping;
+using FormUp.Api.Common.Models;
 using FormUp.Api.Data;
 using FormUp.Contracts.v1.Gyms;
 
@@ -23,23 +24,30 @@ internal class GymsService : IGymsService
     }
 
     /// <inheritdoc />
-    public async Task<IList<GymInfo>> Get(int skip = Constants.List.DefaultSkip,
+    public async Task<ApiResponse<IList<GymInfo>>> Get(int skip = Constants.List.DefaultSkip,
         int take = Constants.List.DefaultPageSize,
         CancellationToken cancellationToken = default)
     {
-        return await _context.Gyms
+        IList<GymInfo> gyms = await _context.Gyms
             .OrderBy(g => g.Name)
             .Skip(skip)
             .Take(take)
             .Include(g => g.Location)
             .Select(g => g.ToGymInfo())
             .ToListAsync(cancellationToken);
+
+        var count = await _context.Gyms.CountAsync(cancellationToken);
+
+        return ApiResponse<IList<GymInfo>>.Ok(
+            gyms,
+            "Gyms were successfully retrieved",
+            new ResponseMetaData(gyms.Count, take, count));
     }
 
     /// <inheritdoc />
-    public async Task<ErrorOr<GymInfo>> Get(Guid id, CancellationToken cancellationToken = default)
+    public async Task<ErrorOr<ApiResponse<GymInfo>>> Get(Guid id, CancellationToken cancellationToken = default)
     {
-        GymEntity? gym = await _context.Gyms
+        var gym = await _context.Gyms
             .Include(g => g.Location)
             .FirstOrDefaultAsync(g => g.Id == id, cancellationToken);
 
@@ -48,6 +56,6 @@ internal class GymsService : IGymsService
             return GymErrors.NotFound(id);
         }
 
-        return gym.ToGymInfo();
+        return ApiResponse<GymInfo>.Ok(gym.ToGymInfo(), "Gym was successfully retrieved");
     }
 }
