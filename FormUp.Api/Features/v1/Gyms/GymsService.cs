@@ -14,13 +14,15 @@ namespace FormUp.Api.Features.v1.Gyms;
 internal class GymsService : IGymsService
 {
     private readonly DataContext _context;
+    private readonly ILogger<GymsService> _logger;
 
     /// <summary>
     ///     Creates new instance of <see cref="GymsService" />
     /// </summary>
-    public GymsService(DataContext context)
+    public GymsService(DataContext context, ILogger<GymsService> logger)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
+        _logger = logger;
     }
 
     /// <inheritdoc />
@@ -53,9 +55,11 @@ internal class GymsService : IGymsService
 
         if (gym is null)
         {
+            _logger.LogError("Gym with ID {@Id} was not found", id);
             return GymErrors.NotFound(id);
         }
 
+        _logger.LogDebug("Successfully retrieved {@Gym}", gym);
         return ApiResponse<GymInfo>.Ok(gym.ToGymInfo(), "Gym was successfully retrieved.");
     }
 }
