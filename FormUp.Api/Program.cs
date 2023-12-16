@@ -1,6 +1,7 @@
 using FormUp.Api.Common.Middleware;
 using FormUp.Api.Data;
 using FormUp.Api.Features.v1.Gyms;
+using FormUp.Api.Features.v1.Translations;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -31,6 +32,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddScoped<IGymsService, GymsService>();
+builder.Services.AddScoped<ITranslationService, TranslationService>();
 
 builder.Services.AddControllers();
 
