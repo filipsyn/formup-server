@@ -36,7 +36,7 @@ public class ExercisesController : ControllerBase
         var result = await _exercisesService.GetById(id, cancellationToken);
 
         return result.MatchFirst(
-            exercise => Results.Ok(result),
+            Results.Ok,
             error => error.ToResponse()
         );
     }
