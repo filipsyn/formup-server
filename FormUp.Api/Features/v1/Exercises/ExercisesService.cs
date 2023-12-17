@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FormUp.Api.Features.v1.Exercises;
 
-public class ExercisesService : IExercisesService
+/// <inheritdoc />
+internal class ExercisesService : IExercisesService
 {
     private readonly DataContext _context;
     private readonly ILogger<ExercisesService> _logger;

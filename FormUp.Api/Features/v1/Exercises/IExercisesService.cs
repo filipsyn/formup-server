@@ -11,7 +11,7 @@ namespace FormUp.Api.Features.v1.Exercises;
 public interface IExercisesService
 {
     /// <summary>
-    ///     Retrieves list of all exercises
+    ///     Retrieves list of all exercises.
     /// </summary>
     /// <param name="searchedName">An optional parameter which allows filtering by name of the exercise.</param>
     /// <param name="cancellationToken">A  <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
