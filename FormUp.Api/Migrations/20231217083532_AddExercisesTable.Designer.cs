@@ -4,6 +4,7 @@ using FormUp.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormUp.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231217083532_AddExercisesTable")]
+    partial class AddExercisesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,58 +47,6 @@ namespace FormUp.Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Geolocations");
-                });
-
-            modelBuilder.Entity("FormUp.Api.Features.v1.Exercises.ExerciseEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Exercises");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("748b67de-d561-4bdd-8b20-b1a84bbc9907"),
-                            CreatedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9830),
-                            ModifiedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9870),
-                            Name = "Pull ups"
-                        },
-                        new
-                        {
-                            Id = new Guid("750af971-a137-4b4a-833e-201e709309f7"),
-                            CreatedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9870),
-                            ModifiedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9870),
-                            Name = "Push ups"
-                        },
-                        new
-                        {
-                            Id = new Guid("eba7fc5f-f872-40b4-8388-471f0ddd9124"),
-                            CreatedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9880),
-                            ModifiedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9880),
-                            Name = "Body-weight squats"
-                        },
-                        new
-                        {
-                            Id = new Guid("7212ec52-61a5-4991-9136-4d29d05df68b"),
-                            CreatedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9880),
-                            ModifiedAt = new DateTime(2023, 12, 17, 22, 25, 30, 49, DateTimeKind.Local).AddTicks(9880),
-                            Name = "Dips"
-                        });
                 });
 
             modelBuilder.Entity("FormUp.Api.Features.v1.Gyms.GymEntity", b =>

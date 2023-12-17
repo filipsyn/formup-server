@@ -1,5 +1,6 @@
 using FormUp.Api.Common.Middleware;
 using FormUp.Api.Data;
+using FormUp.Api.Features.v1.Exercises;
 using FormUp.Api.Features.v1.Gyms;
 
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddScoped<IGymsService, GymsService>();
+builder.Services.AddScoped<IExercisesService, ExercisesService>();
 
 builder.Services.AddControllers();
 
