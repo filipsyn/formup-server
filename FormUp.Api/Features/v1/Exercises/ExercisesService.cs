@@ -12,10 +12,12 @@ namespace FormUp.Api.Features.v1.Exercises;
 public class ExercisesService : IExercisesService
 {
     private readonly DataContext _context;
+    private readonly ILogger<ExercisesService> _logger;
 
-    public ExercisesService(DataContext context)
+    public ExercisesService(DataContext context, ILogger<ExercisesService> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     /// <inheritdoc />
@@ -45,6 +47,7 @@ public class ExercisesService : IExercisesService
 
         if (exercise is null)
         {
+            _logger.LogError("Exercise with ID {@Id} was not found", id);
             return ExerciseErrors.NotFound(id);
         }
 
