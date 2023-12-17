@@ -29,7 +29,7 @@ public class ExercisesService : IExercisesService
 
         if (searchedName is not null)
         {
-            exercises = exercises.Where(e => e.Name.Contains(searchedName, StringComparison.OrdinalIgnoreCase));
+            exercises = exercises.Where(e => e.Name.Contains(searchedName));
         }
 
         IList<ExerciseInfo> result = await exercises
