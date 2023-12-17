@@ -13,6 +13,8 @@ public interface IExercisesService
     /// <summary>
     ///     Retrieves list of all exercises
     /// </summary>
+    /// <param name="searchedName">An optional parameter which allows filtering by name of the exercise.</param>
+    /// <param name="cancellationToken">A  <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
     Task<ApiResponse<IList<ExerciseInfo>>> Get(string? searchedName = null,
         CancellationToken cancellationToken = default);
 
