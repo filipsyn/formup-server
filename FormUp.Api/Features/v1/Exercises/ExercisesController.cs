@@ -9,6 +9,7 @@ namespace FormUp.Api.Features.v1.Exercises;
 
 [ApiController]
 [Route(EndpointUrls.Exercises.GroupUrl)]
+[Produces("application/json")]
 public class ExercisesController : ControllerBase
 {
     private readonly IExercisesService _exercisesService;
@@ -31,6 +32,8 @@ public class ExercisesController : ControllerBase
     }
 
     [HttpGet(EndpointUrls.Exercises.GetById)]
+    [ProducesResponseType<ApiResponse<ExerciseInfo>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
     public async Task<IResult> GetById([FromRoute] Guid id, CancellationToken cancellationToken = default)
     {
         var result = await _exercisesService.GetById(id, cancellationToken);
