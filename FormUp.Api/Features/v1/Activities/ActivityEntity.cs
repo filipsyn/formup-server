@@ -18,7 +18,6 @@ public class ActivityEntity : BaseEntity
     /// </summary>
     public int SetsCount { get; set; }
 
-
     /// <summary>
     ///     Number of repetitions of exercise performed in each set.
     /// </summary>
