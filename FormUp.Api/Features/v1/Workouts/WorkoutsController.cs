@@ -36,4 +36,17 @@ public class WorkoutsController : ControllerBase
             error => error.ToResponse()
         );
     }
+
+    [HttpGet(EndpointUrls.Workouts.GetById)]
+    [ProducesResponseType<ApiResponse<WorkoutInfo>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
+    public async Task<IResult> GetById(Guid id, CancellationToken cancellationToken = default)
+    {
+        var result = await _workoutsService.GetById(id, cancellationToken);
+
+        return result.MatchFirst(
+            Results.Ok,
+            error => error.ToResponse()
+        );
+    }
 }
