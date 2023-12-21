@@ -1,7 +1,7 @@
 using FormUp.Api.Common.Persistence;
 using FormUp.Api.Features.v1.Exercises;
 
-namespace FormUp.Api.Features.v1.Activities;
+namespace FormUp.Api.Features.v1.Workouts;
 
 /// <summary>
 ///     Entity representing an activity logged to user's workout.
