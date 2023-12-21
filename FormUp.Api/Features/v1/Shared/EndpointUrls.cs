@@ -40,10 +40,19 @@ internal static class EndpointUrls
     /// </summary>
     public static class Exercises
     {
+        /// <summary>
+        ///     Common URL prefix for all endpoints in <see cref="ExercisesController" />.
+        /// </summary>
         public const string GroupUrl = $"{Prefix}/exercises";
 
+        /// <summary>
+        ///     URL for <see cref="ExercisesController.Get" /> method.
+        /// </summary>
         public const string Get = "";
 
+        /// <summary>
+        ///     URL for <see cref="ExercisesController.GetById" /> method.
+        /// </summary>
         public const string GetById = "{id:guid}";
     }
 }
