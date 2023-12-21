@@ -1,5 +1,6 @@
 using FormUp.Api.Features.v1.Exercises;
 using FormUp.Api.Features.v1.Gyms;
+using FormUp.Api.Features.v1.Workouts;
 
 namespace FormUp.Api.Features.v1.Shared;
 
@@ -52,6 +53,27 @@ internal static class EndpointUrls
 
         /// <summary>
         ///     URL for <see cref="ExercisesController.GetById" /> method.
+        /// </summary>
+        public const string GetById = "{id:guid}";
+    }
+
+    /// <summary>
+    ///     Class containing URLs for endpoints on <see cref="WorkoutsController" />.
+    /// </summary>
+    public static class Workouts
+    {
+        /// <summary>
+        ///     Common URL prefix for all endpoints in <see cref="WorkoutsController" />.
+        /// </summary>
+        public const string GroupUrl = $"{Prefix}/workouts";
+
+        /// <summary>
+        ///     URL for <see cref="WorkoutsController.Get" /> method.
+        /// </summary>
+        public const string Get = "";
+
+        /// <summary>
+        ///     URL for <see cref="WorkoutsController.GetById" /> method.
         /// </summary>
         public const string GetById = "{id:guid}";
     }
