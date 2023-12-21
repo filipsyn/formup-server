@@ -1,6 +1,6 @@
 using FormUp.Contracts.v1.Exercises;
 
-namespace FormUp.Contracts.v1.Activities;
+namespace FormUp.Contracts.v1.Workouts;
 
 public record ActivityInfo
 {
