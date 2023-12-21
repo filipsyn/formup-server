@@ -13,10 +13,12 @@ namespace FormUp.Api.Features.v1.Workouts;
 internal class WorkoutsService : IWorkoutsService
 {
     private readonly DataContext _context;
+    private readonly ILogger<WorkoutsService> _logger;
 
-    public WorkoutsService(DataContext context)
+    public WorkoutsService(DataContext context, ILogger<WorkoutsService> logger)
     {
         _context = context;
+        _logger = logger;
     }
 
     /// <inheritdoc />
@@ -27,6 +29,7 @@ internal class WorkoutsService : IWorkoutsService
         var workout = await _context.Workouts.FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
         if (workout is null)
         {
+            _logger.LogError("Workout with ID {ID} was not found", id);
             return WorkoutErrors.WorkoutNotFound(id);
         }
 
@@ -47,6 +50,7 @@ internal class WorkoutsService : IWorkoutsService
 
         if (!usersWorkouts.Any())
         {
+            _logger.LogError("User with ID {ID} has no logged workouts", userId);
             return WorkoutErrors.UserNotFound(userId);
         }
 
