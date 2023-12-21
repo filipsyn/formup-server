@@ -2,6 +2,9 @@ using FormUp.Contracts.v1.Exercises;
 
 namespace FormUp.Contracts.v1.Workouts;
 
+/// <summary>
+///     Contract defining activity response.
+/// </summary>
 public record ActivityInfo
 {
     /// <summary>
