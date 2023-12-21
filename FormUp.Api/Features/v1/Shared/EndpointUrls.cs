@@ -70,7 +70,7 @@ internal static class EndpointUrls
         /// <summary>
         ///     URL for <see cref="WorkoutsController.Get" /> method.
         /// </summary>
-        public const string Get = "";
+        public const string Get = "{userId}";
 
         /// <summary>
         ///     URL for <see cref="WorkoutsController.GetById" /> method.
