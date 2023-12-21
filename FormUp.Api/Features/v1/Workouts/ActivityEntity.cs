@@ -14,6 +14,16 @@ public class ActivityEntity : BaseEntity
     public ExerciseEntity? Exercise { get; set; }
 
     /// <summary>
+    ///     ID of performed exercise.
+    /// </summary>
+    public Guid ExerciseId { get; set; }
+
+    /// <summary>
+    ///     ID of workout in which activity was performed.
+    /// </summary>
+    public Guid WorkoutId { get; set; }
+
+    /// <summary>
     ///     Number of sets performed of one exercise in a Workout.
     /// </summary>
     public int SetsCount { get; set; }
