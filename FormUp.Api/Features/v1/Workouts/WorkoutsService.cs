@@ -41,7 +41,8 @@ internal class WorkoutsService : IWorkoutsService
 
 
     /// <inheritdoc />
-    public async Task<ErrorOr<Guid>> Create(CreateWorkout workout, CancellationToken cancellationToken = default)
+    public async Task<ErrorOr<ApiResponse<CreateWorkoutResponse>>> Create(CreateWorkout workout,
+        CancellationToken cancellationToken = default)
     {
         var newWorkout = workout.ToEntity();
 
@@ -49,7 +50,6 @@ internal class WorkoutsService : IWorkoutsService
         {
             await _context.Workouts.AddAsync(newWorkout, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
-            return newWorkout.Id;
         }
         catch (DbUpdateException ex)
         {
@@ -66,6 +66,9 @@ internal class WorkoutsService : IWorkoutsService
             _logger.LogError(ex, "Unhandled exception has been raised during attempt to create new workout");
             return WorkoutErrors.CreationFailure;
         }
+
+        return ApiResponse<Guid>.Created(new CreateWorkoutResponse(newWorkout.Id),
+            "A workout has been successfully logged.");
     }
 
     /// <inheritdoc />

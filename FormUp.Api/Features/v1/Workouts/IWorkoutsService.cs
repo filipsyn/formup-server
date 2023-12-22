@@ -36,5 +36,6 @@ public interface IWorkoutsService
     /// <param name="workout">Information about newly logged workout.</param>
     /// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
     /// <returns>Id of newly created workout.</returns>
-    Task<ErrorOr<Guid>> Create(CreateWorkout workout, CancellationToken cancellationToken = default);
+    Task<ErrorOr<ApiResponse<CreateWorkoutResponse>>> Create(CreateWorkout workout,
+        CancellationToken cancellationToken = default);
 }
