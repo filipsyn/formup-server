@@ -5,6 +5,7 @@ using FormUp.Api.Common.Extensions.Mapping;
 using FormUp.Api.Common.Models;
 using FormUp.Api.Data;
 using FormUp.Contracts.v1.Workouts;
+using FormUp.Contracts.v1.Workouts.Requests;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -36,6 +37,35 @@ internal class WorkoutsService : IWorkoutsService
         return ApiResponse<WorkoutInfo>.Ok(
             workout.ToWorkoutInfo(),
             $"Workout with ID {id} successfully retrieved.");
+    }
+
+
+    /// <inheritdoc />
+    public async Task<ErrorOr<Guid>> Create(CreateWorkout workout, CancellationToken cancellationToken = default)
+    {
+        var newWorkout = workout.ToEntity();
+
+        try
+        {
+            await _context.Workouts.AddAsync(newWorkout, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+            return newWorkout.Id;
+        }
+        catch (DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Unable to save newly created workout to database");
+            return WorkoutErrors.CreationFailure;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogError(ex, "Attempt to add workout was canceled");
+            return WorkoutErrors.CreationFailure;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unhandled exception has been raised during attempt to create new workout");
+            return WorkoutErrors.CreationFailure;
+        }
     }
 
     /// <inheritdoc />
