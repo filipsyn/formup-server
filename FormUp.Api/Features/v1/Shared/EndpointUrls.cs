@@ -76,5 +76,10 @@ internal static class EndpointUrls
         ///     URL for <see cref="WorkoutsController.GetById" /> method.
         /// </summary>
         public const string GetById = "{id:guid}";
+
+        /// <summary>
+        ///     Url for <see cref="WorkoutsController.Create" /> method.
+        /// </summary>
+        public const string Create = "";
     }
 }

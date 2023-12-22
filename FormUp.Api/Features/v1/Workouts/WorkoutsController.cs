@@ -3,6 +3,7 @@ using FormUp.Api.Common.Extensions;
 using FormUp.Api.Common.Models;
 using FormUp.Api.Features.v1.Shared;
 using FormUp.Contracts.v1.Workouts;
+using FormUp.Contracts.v1.Workouts.Requests;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,6 +47,19 @@ public class WorkoutsController : ControllerBase
 
         return result.MatchFirst(
             Results.Ok,
+            error => error.ToResponse()
+        );
+    }
+
+    [HttpPost(EndpointUrls.Workouts.Create)]
+    [ProducesResponseType<ApiResponse<CreateWorkoutResponse>>(StatusCodes.Status201Created)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status400BadRequest)]
+    public async Task<IResult> Create(CreateWorkout request, CancellationToken cancellationToken = default)
+    {
+        var result = await _workoutsService.Create(request, cancellationToken);
+
+        return result.MatchFirst(
+            response => Results.Created(null as string, response),
             error => error.ToResponse()
         );
     }
