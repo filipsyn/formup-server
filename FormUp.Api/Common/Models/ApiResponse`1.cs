@@ -26,4 +26,12 @@ public record ApiResponse<TData>
             StatusCode = StatusCodes.Status200OK, Payload = payload, Message = message, Meta = metadata
         };
     }
+
+    public static ApiResponse<T> Created<T>(T payload, string? message = null)
+    {
+        return new ApiResponse<T>
+        {
+            StatusCode = StatusCodes.Status201Created, Payload = payload, Message = message, Meta = null
+        };
+    }
 }
