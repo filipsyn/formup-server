@@ -150,6 +150,23 @@ internal class WorkoutsService : IWorkoutsService
 
         _context.Workouts.Remove(workout);
 
+        int changedRowsCount;
+
+        try
+        {
+            changedRowsCount = await _context.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Deletion of workout couldn't be processed on the database level");
+            return WorkoutErrors.DeletionFailure;
+        }
+
+        if (changedRowsCount is not 1)
+        {
+            return WorkoutErrors.DeletionFailure;
+        }
+
         return ApiResponse.NoContent();
     }
 }

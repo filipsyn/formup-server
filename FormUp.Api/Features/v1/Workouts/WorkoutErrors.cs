@@ -10,6 +10,9 @@ public static class WorkoutErrors
 
     public static Error UpdateFailure => Error.Failure($"{FeaturePrefix}:UpdateFailure", "Unable to update workout.");
 
+    public static Error DeletionFailure =>
+        Error.Failure($"{FeaturePrefix}:DeletionFailure", "Unable to delete workout.");
+
     public static Error WorkoutNotFound(Guid id)
     {
         return Error.NotFound(
