@@ -27,4 +27,12 @@ public static class WorkoutEntityMappingExtensions
                 contract.Activities.Select(a => a.ToEntity()).ToList()
         };
     }
+
+    public static void ApplyUpdate(this WorkoutEntity entity, UpdateWorkoutRequest contract)
+    {
+        entity.At = contract.At;
+        entity.UserId = contract.UserId;
+        entity.ModifiedAt = DateTime.Now;
+        entity.Activities = contract.Activities.Select(a => a.ToEntity()).ToList();
+    }
 }

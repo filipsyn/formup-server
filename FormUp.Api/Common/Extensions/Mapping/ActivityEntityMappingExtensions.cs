@@ -30,4 +30,16 @@ public static class ActivityEntityMappingExtensions
             Notes = contract.Notes ?? string.Empty
         };
     }
+
+    public static ActivityEntity ToEntity(this UpdateActivityRequest contract)
+    {
+        return new ActivityEntity
+        {
+            ExerciseId = contract.ExerciseId,
+            Weight = contract.Weight,
+            RepetitionsCount = contract.RepetitionsCount,
+            SetsCount = contract.SetsCount,
+            Notes = contract.Notes ?? string.Empty
+        };
+    }
 }

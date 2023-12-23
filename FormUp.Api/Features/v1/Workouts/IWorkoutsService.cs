@@ -38,4 +38,26 @@ public interface IWorkoutsService
     /// <returns>Id of newly created workout.</returns>
     Task<ErrorOr<ApiResponse<CreateWorkoutResponse>>> Create(CreateWorkout workout,
         CancellationToken cancellationToken = default);
+
+
+    /// <summary>
+    ///     Updates a workout with the specified ID.
+    /// </summary>
+    /// <param name="id">An ID of the workout to update.</param>
+    /// <param name="request">The updated workout request.</param>
+    /// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
+    Task<ErrorOr<ApiResponse>> Update(
+        Guid id,
+        UpdateWorkoutRequest request,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Deletes a workout specified by its ID.
+    /// </summary>
+    /// <param name="id">An ID of the workout to delete.</param>
+    /// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
+    /// <returns></returns>
+    Task<ErrorOr<ApiResponse>> Delete(
+        Guid id,
+        CancellationToken cancellationToken = default);
 }

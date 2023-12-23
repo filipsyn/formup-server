@@ -105,4 +105,51 @@ internal class WorkoutsService : IWorkoutsService
                 take,
                 usersWorkouts.Count()));
     }
+
+    /// <inheritdoc />
+    public async Task<ErrorOr<ApiResponse>> Update(
+        Guid id,
+        UpdateWorkoutRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        var workout = await _context.Workouts
+            .Include(w => w.Activities)
+            .FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
+
+        if (workout is null)
+        {
+            _logger.LogError("Workout with ID {ID} not found", id);
+            return WorkoutErrors.WorkoutNotFound(id);
+        }
+
+        workout.ApplyUpdate(request);
+
+        try
+        {
+            _context.Workouts.Update(workout);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Updated workout entity could not be saved into the database");
+            return WorkoutErrors.UpdateFailure;
+        }
+
+        return ApiResponse.Created($"Workout with ID {workout.Id} and its activities were successfully updated");
+    }
+
+    /// <inheritdoc />
+    public async Task<ErrorOr<ApiResponse>> Delete(Guid id, CancellationToken cancellationToken = default)
+    {
+        var workout = await _context.Workouts.FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
+        if (workout is null)
+        {
+            _logger.LogWarning("Could not find workout with ID {@ID}", id);
+            return WorkoutErrors.WorkoutNotFound(id);
+        }
+
+        _context.Workouts.Remove(workout);
+
+        return ApiResponse.NoContent();
+    }
 }

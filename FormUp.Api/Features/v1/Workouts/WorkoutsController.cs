@@ -63,4 +63,34 @@ public class WorkoutsController : ControllerBase
             error => error.ToResponse()
         );
     }
+
+    [HttpPut(EndpointUrls.Workouts.Update)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status202Accepted)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
+    public async Task<IResult> Update(
+        Guid id,
+        UpdateWorkoutRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await _workoutsService.Update(id, request, cancellationToken);
+
+        return result.MatchFirst(
+            response => Results.Accepted(null, response),
+            error => error.ToResponse()
+        );
+    }
+
+    [HttpDelete(EndpointUrls.Workouts.Delete)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
+    public async Task<IResult> Delete(Guid id, CancellationToken cancellationToken = default)
+    {
+        var result = await _workoutsService.Delete(id, cancellationToken);
+
+        return result.MatchFirst(
+            _ => Results.NoContent(),
+            error => error.ToResponse()
+        );
+    }
 }
