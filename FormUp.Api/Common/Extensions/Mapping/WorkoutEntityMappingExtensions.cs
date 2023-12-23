@@ -13,8 +13,7 @@ public static class WorkoutEntityMappingExtensions
             Id = entity.Id,
             At = entity.At,
             UserId = entity.UserId,
-            Activities = entity.Activities?.Select(a => a.ToActivityInfo()) as IList<ActivityInfo> ??
-                         new List<ActivityInfo>()
+            Activities = entity.Activities.Select(a => a.ToActivityInfo()).ToList()
         };
     }
 
