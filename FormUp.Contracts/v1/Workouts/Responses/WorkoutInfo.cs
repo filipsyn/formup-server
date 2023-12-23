@@ -6,6 +6,11 @@ namespace FormUp.Contracts.v1.Workouts;
 public record WorkoutInfo
 {
     /// <summary>
+    ///     And ID of workout.
+    /// </summary>
+    public Guid Id { get; init; }
+
+    /// <summary>
     ///     Id of user that logged given workout.
     /// </summary>
     public string UserId { get; init; } = string.Empty;
