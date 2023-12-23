@@ -124,14 +124,22 @@ internal class WorkoutsService : IWorkoutsService
 
         workout.ApplyUpdate(request);
 
+        int changedRowsCounts;
+
         try
         {
             _context.Workouts.Update(workout);
-            await _context.SaveChangesAsync(cancellationToken);
+            changedRowsCounts = await _context.SaveChangesAsync(cancellationToken);
         }
         catch (DbUpdateException ex)
         {
             _logger.LogError(ex, "Updated workout entity could not be saved into the database");
+            return WorkoutErrors.UpdateFailure;
+        }
+
+        if (changedRowsCounts == 0)
+        {
+            _logger.LogError("No changes were made to the underlying entity");
             return WorkoutErrors.UpdateFailure;
         }
 
