@@ -17,10 +17,12 @@ internal class TranslationService : ITranslationService
         _logger = logger;
     }
 
+    /// <inheritdocs />
     public async Task<bool> ApplyTranslation<TEntity>(
         TEntity entity,
         Func<TEntity, string> propertySelector,
-        string language)
+        string language = "en",
+        CancellationToken cancellationToken = default)
     {
         var propertyName = propertySelector(entity);
 
