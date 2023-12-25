@@ -11,7 +11,7 @@ public static class ActivityEntityMappingExtensions
         return new ActivityInfo
         {
             Id = entity.Id,
-            Exercise = entity.Exercise?.ToExerciseInfo(),
+            ExerciseId = entity.Exercise.Id,
             Notes = entity.Notes,
             RepetitionsCount = entity.RepetitionsCount,
             SetsCount = entity.SetsCount,
