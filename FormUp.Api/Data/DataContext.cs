@@ -3,7 +3,6 @@ using FormUp.Api.Data.Configuration;
 using FormUp.Api.Features.v1.Exercises;
 using FormUp.Api.Features.v1.Gyms;
 using FormUp.Api.Features.v1.Translations;
-
 using FormUp.Api.Features.v1.Workouts;
 
 using Microsoft.EntityFrameworkCore;
@@ -24,5 +23,6 @@ public class DataContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new ExercisesEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new TranslationsEntityConfiguration());
     }
 }
