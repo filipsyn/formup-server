@@ -79,24 +79,4 @@ internal class TranslationService : ITranslationService
 
         return translation.Value;
     }
-
-    public async Task<ErrorOr<Dictionary<string, string>>> GetTranslations(
-        string language,
-        IEnumerable<string> keys,
-        CancellationToken cancellationToken = default)
-    {
-        var translations = await _context.Translations
-            .Where(t => t.Locale == language)
-            .Join<TranslationEntity, string, string, TranslationEntity>(
-                keys,
-                translation => translation.Key,
-                key => key,
-                (translation, key) => translation)
-            .ToDictionaryAsync<TranslationEntity, string, string>(
-                t => t.Key,
-                t => t.Value,
-                cancellationToken);
-
-        return translations;
-    }
 }
