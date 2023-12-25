@@ -1,3 +1,4 @@
+using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Extensions;
 using FormUp.Api.Common.Models;
 using FormUp.Api.Features.v1.Shared;
@@ -24,7 +25,7 @@ public class ExercisesController : ControllerBase
     public async Task<IResult> Get(
         [FromQuery(Name = "name")] string? searchedName = null,
         [FromHeader(Name = "Content-Language")]
-        string language = "en",
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default
     )
     {
@@ -38,7 +39,8 @@ public class ExercisesController : ControllerBase
     [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
     public async Task<IResult> GetById(
         [FromRoute] Guid id,
-        [FromHeader(Name = "Content-Language")] string language = "en",
+        [FromHeader(Name = "Content-Language")]
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default)
     {
         var result = await _exercisesService.GetById(id, language, cancellationToken);

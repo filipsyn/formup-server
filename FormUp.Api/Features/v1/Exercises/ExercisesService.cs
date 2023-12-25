@@ -1,5 +1,6 @@
 using ErrorOr;
 
+using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Extensions.Mapping;
 using FormUp.Api.Common.Models;
 using FormUp.Api.Data;
@@ -30,7 +31,7 @@ internal class ExercisesService : IExercisesService
     /// <inheritdoc />
     public async Task<ApiResponse<IList<ExerciseInfo>>> Get(
         string? searchedName = null,
-        string language = "en",
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default)
     {
         var exercises = await _context.Exercises.ToListAsync(cancellationToken);
@@ -61,7 +62,7 @@ internal class ExercisesService : IExercisesService
     /// <inheritdoc />
     public async Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(
         Guid id,
-        string language = "en",
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default)
     {
         var exercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);

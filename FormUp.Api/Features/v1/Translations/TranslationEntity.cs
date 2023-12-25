@@ -1,3 +1,4 @@
+using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Persistence;
 
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +18,7 @@ public class TranslationEntity : BaseEntity
     /// <summary>
     ///     Locale in which corresponding value is used.
     /// </summary>
-    public string Locale { get; set; } = "en";
+    public string Locale { get; set; } = Constants.Translation.Default;
 
     /// <summary>
     ///     Key by which is localized resource identified.

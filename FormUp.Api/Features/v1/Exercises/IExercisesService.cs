@@ -1,5 +1,6 @@
 using ErrorOr;
 
+using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Models;
 using FormUp.Contracts.v1.Exercises;
 
@@ -17,7 +18,7 @@ public interface IExercisesService
     /// <param name="language">A language to which will be result translated.</param>
     /// <param name="cancellationToken">A  <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
     Task<ApiResponse<IList<ExerciseInfo>>> Get(string? searchedName = null,
-        string language = "en",
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -25,6 +26,6 @@ public interface IExercisesService
     /// </summary>
     Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(
         Guid id,
-        string language = "en",
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default);
 }

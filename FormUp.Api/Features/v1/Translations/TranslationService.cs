@@ -1,5 +1,6 @@
 using ErrorOr;
 
+using FormUp.Api.Common.Config;
 using FormUp.Api.Data;
 
 using Microsoft.EntityFrameworkCore;
@@ -21,7 +22,7 @@ internal class TranslationService : ITranslationService
     public async Task<bool> ApplyTranslation<TEntity>(
         TEntity entity,
         Func<TEntity, string> propertySelector,
-        string language = "en",
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default)
     {
         var propertyName = propertySelector(entity);
