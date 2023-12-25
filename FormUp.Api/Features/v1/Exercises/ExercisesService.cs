@@ -48,21 +48,23 @@ internal class ExercisesService : IExercisesService
         string language = "en",
         CancellationToken cancellationToken = default)
     {
-        var exercises = _context.Exercises.AsQueryable();
+        var exercises = await _context.Exercises.ToListAsync(cancellationToken);
 
-        if (searchedName is not null)
-        {
-            exercises = exercises.Where(e => e.Name.Contains(searchedName));
-        }
-
-        IList<ExerciseInfo> result = await exercises
-            .Select(e => e.ToExerciseInfo())
-            .ToListAsync(cancellationToken);
-
-        foreach (var exercise in result)
+        foreach (var exercise in exercises)
         {
             await _translationService.ApplyTranslation(exercise, e => nameof(e.Name), language);
         }
+
+        if (searchedName is not null)
+        {
+            exercises = exercises
+                .Where(e => e.Name.Contains(searchedName, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
+        IList<ExerciseInfo> result = exercises
+            .Select(e => e.ToExerciseInfo())
+            .ToList();
 
         return ApiResponse<IList<ExerciseInfo>>.Ok(result);
     }
