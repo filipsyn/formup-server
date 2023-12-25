@@ -37,7 +37,11 @@ internal class ExercisesService : IExercisesService
 
         foreach (var exercise in exercises)
         {
-            await _translationService.ApplyTranslation(exercise, e => nameof(e.Name), language);
+            await _translationService.ApplyTranslation(
+                exercise,
+                e => nameof(e.Name),
+                language,
+                cancellationToken);
         }
 
         if (searchedName is not null)
@@ -68,7 +72,11 @@ internal class ExercisesService : IExercisesService
             return ExerciseErrors.NotFound(id);
         }
 
-        await _translationService.ApplyTranslation(exercise, e => nameof(e.Name), language);
+        await _translationService.ApplyTranslation(
+            exercise,
+            e => nameof(e.Name),
+            language,
+            cancellationToken);
 
         return ApiResponse<ExerciseInfo>.Ok(exercise.ToExerciseInfo());
     }
