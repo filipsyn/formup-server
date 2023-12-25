@@ -70,31 +70,31 @@ namespace FormUp.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b9d61a45-a182-4644-9362-b197cc9b757d"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1660),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1720),
-                            Name = "Pull ups"
+                            Id = new Guid("b9648b00-a160-414e-b090-ca1a2360f420"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8440),
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8480),
+                            Name = "exercises.pull-ups"
                         },
                         new
                         {
-                            Id = new Guid("da235ed0-2e56-4de8-8ad9-21f9f6be794a"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1730),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1730),
-                            Name = "Push ups"
+                            Id = new Guid("8a0cb85e-1a38-4d86-b33a-2ad5b3cf685a"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8490),
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8490),
+                            Name = "exercises.push-ups"
                         },
                         new
                         {
-                            Id = new Guid("fe1f1617-50d3-4aca-a01a-374ae3847bb2"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
-                            Name = "Body-weight squats"
+                            Id = new Guid("18701ace-5927-413a-9393-d9550d5c1221"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8490),
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8490),
+                            Name = "exercises.bw-squats"
                         },
                         new
                         {
-                            Id = new Guid("045adcda-457e-484b-9bd8-330cd3cefa2f"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
-                            Name = "Dips"
+                            Id = new Guid("d2bf04e5-4301-49b9-8912-31cf478dc753"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8500),
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8500),
+                            Name = "exercises.dips"
                         });
                 });
 
@@ -123,6 +123,112 @@ namespace FormUp.Api.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("Gyms");
+                });
+
+            modelBuilder.Entity("FormUp.Api.Features.v1.Translations.TranslationEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnOrder(0);
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Locale")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Locale", "Key");
+
+                    b.ToTable("Translations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0043a09c-33c6-4849-aa44-e459da524d47"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8600),
+                            Key = "exercises.pull-ups",
+                            Locale = "cs",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8600),
+                            Value = "Shyby"
+                        },
+                        new
+                        {
+                            Id = new Guid("639129eb-9054-4349-b057-be09fa374de4"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8600),
+                            Key = "exercises.pull-ups",
+                            Locale = "en",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8600),
+                            Value = "Pull ups"
+                        },
+                        new
+                        {
+                            Id = new Guid("7d2ee132-7a45-4b96-8226-a1254fb706d8"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8610),
+                            Key = "exercises.dips",
+                            Locale = "cs",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8610),
+                            Value = "Dipy"
+                        },
+                        new
+                        {
+                            Id = new Guid("c3f44586-b780-46ab-9b75-7e0a9abb48a9"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8610),
+                            Key = "exercises.dips",
+                            Locale = "en",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8610),
+                            Value = "Dips"
+                        },
+                        new
+                        {
+                            Id = new Guid("eeb0ee76-ea2f-4030-910b-1c9383a90d4b"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8620),
+                            Key = "exercises.bw-squats",
+                            Locale = "cs",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8620),
+                            Value = "Dřepy s vlastní vahou"
+                        },
+                        new
+                        {
+                            Id = new Guid("cfc6c877-8087-4751-841a-300fdc7bea99"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8620),
+                            Key = "exercises.bw-squats",
+                            Locale = "en",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8630),
+                            Value = "Body-weight squats"
+                        },
+                        new
+                        {
+                            Id = new Guid("b02ae724-3a74-4512-af82-839b3788cebc"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8630),
+                            Key = "exercises.push-ups",
+                            Locale = "cs",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8630),
+                            Value = "Kliky"
+                        },
+                        new
+                        {
+                            Id = new Guid("58a29f76-2cb2-43b2-873b-a9a0b4d8d1d6"),
+                            CreatedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8630),
+                            Key = "exercises.push-ups",
+                            Locale = "en",
+                            ModifiedAt = new DateTime(2023, 12, 25, 15, 4, 42, 218, DateTimeKind.Local).AddTicks(8630),
+                            Value = "Push ups"
+                        });
                 });
 
             modelBuilder.Entity("FormUp.Api.Features.v1.Workouts.ActivityEntity", b =>

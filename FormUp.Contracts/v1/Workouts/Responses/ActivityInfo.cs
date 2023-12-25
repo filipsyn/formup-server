@@ -1,5 +1,3 @@
-using FormUp.Contracts.v1.Exercises;
-
 namespace FormUp.Contracts.v1.Workouts;
 
 /// <summary>
@@ -15,7 +13,7 @@ public record ActivityInfo
     /// <summary>
     ///     Exercise performed.
     /// </summary>
-    public ExerciseInfo? Exercise { get; init; }
+    public Guid ExerciseId { get; init; }
 
     /// <summary>
     ///     Number of sets performed of one exercise in a Workout.

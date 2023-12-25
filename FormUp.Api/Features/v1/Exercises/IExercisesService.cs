@@ -1,5 +1,6 @@
 using ErrorOr;
 
+using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Models;
 using FormUp.Contracts.v1.Exercises;
 
@@ -14,12 +15,17 @@ public interface IExercisesService
     ///     Retrieves list of all exercises.
     /// </summary>
     /// <param name="searchedName">An optional parameter which allows filtering by name of the exercise.</param>
+    /// <param name="language">A language to which will be result translated.</param>
     /// <param name="cancellationToken">A  <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
     Task<ApiResponse<IList<ExerciseInfo>>> Get(string? searchedName = null,
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Retrieves exercise by its id.
     /// </summary>
-    Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(Guid id, CancellationToken cancellationToken = default);
+    Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(
+        Guid id,
+        string language = Constants.Translation.Default,
+        CancellationToken cancellationToken = default);
 }

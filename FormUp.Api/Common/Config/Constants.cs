@@ -20,4 +20,32 @@ public static class Constants
         /// </summary>
         public const int DefaultSkip = 0;
     }
+
+    /// <summary>
+    ///     Declares constants related to translation.
+    /// </summary>
+    public static class Translation
+    {
+        /// <summary>
+        ///     Specifies identifier for english translation.
+        /// </summary>
+        public const string English = "en";
+
+        /// <summary>
+        ///     Specifies identifier for czech translation.
+        /// </summary>
+        public const string Czech = "cs";
+
+
+        /// <summary>
+        ///     Stores identifier for default language translation.
+        /// </summary>
+        /// <remarks>This application uses English as its default translation.</remarks>
+        public const string Default = English;
+
+        /// <summary>
+        ///     Specifies name of header that declares language of response.
+        /// </summary>
+        public const string Header = "Content-Language";
+    }
 }

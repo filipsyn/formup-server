@@ -13,5 +13,5 @@ public record ExerciseInfo
     /// <summary>
     ///     Name of exercise.
     /// </summary>
-    public required string Name { get; init; }
+    public required string Name { get; set; }
 }

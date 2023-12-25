@@ -1,8 +1,10 @@
 using ErrorOr;
 
+using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Extensions.Mapping;
 using FormUp.Api.Common.Models;
 using FormUp.Api.Data;
+using FormUp.Api.Features.v1.Translations;
 using FormUp.Contracts.v1.Exercises;
 
 using Microsoft.EntityFrameworkCore;
@@ -14,34 +16,53 @@ internal class ExercisesService : IExercisesService
 {
     private readonly DataContext _context;
     private readonly ILogger<ExercisesService> _logger;
+    private readonly ITranslationService _translationService;
 
-    public ExercisesService(DataContext context, ILogger<ExercisesService> logger)
+    public ExercisesService(
+        DataContext context,
+        ILogger<ExercisesService> logger,
+        ITranslationService translationService)
     {
         _context = context;
         _logger = logger;
+        _translationService = translationService;
     }
 
     /// <inheritdoc />
     public async Task<ApiResponse<IList<ExerciseInfo>>> Get(
         string? searchedName = null,
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default)
     {
-        var exercises = _context.Exercises.AsQueryable();
+        var exercises = await _context.Exercises.ToListAsync(cancellationToken);
+
+        foreach (var exercise in exercises)
+        {
+            await _translationService.ApplyTranslation(
+                exercise,
+                e => nameof(e.Name),
+                language,
+                cancellationToken);
+        }
 
         if (searchedName is not null)
         {
-            exercises = exercises.Where(e => e.Name.Contains(searchedName));
+            exercises = exercises
+                .Where(e => e.Name.Contains(searchedName, StringComparison.OrdinalIgnoreCase))
+                .ToList();
         }
 
-        IList<ExerciseInfo> result = await exercises
+        IList<ExerciseInfo> result = exercises
             .Select(e => e.ToExerciseInfo())
-            .ToListAsync(cancellationToken);
+            .ToList();
 
         return ApiResponse<IList<ExerciseInfo>>.Ok(result);
     }
 
     /// <inheritdoc />
-    public async Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(Guid id,
+    public async Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(
+        Guid id,
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default)
     {
         var exercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
@@ -51,6 +72,12 @@ internal class ExercisesService : IExercisesService
             _logger.LogError("Exercise with ID {@Id} was not found", id);
             return ExerciseErrors.NotFound(id);
         }
+
+        await _translationService.ApplyTranslation(
+            exercise,
+            e => nameof(e.Name),
+            language,
+            cancellationToken);
 
         return ApiResponse<ExerciseInfo>.Ok(exercise.ToExerciseInfo());
     }

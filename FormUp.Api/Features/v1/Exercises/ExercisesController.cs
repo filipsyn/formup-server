@@ -1,3 +1,4 @@
+using FormUp.Api.Common.Config;
 using FormUp.Api.Common.Extensions;
 using FormUp.Api.Common.Models;
 using FormUp.Api.Features.v1.Shared;
@@ -23,10 +24,12 @@ public class ExercisesController : ControllerBase
     [ProducesResponseType<ApiResponse<IList<ExerciseInfo>>>(StatusCodes.Status200OK)]
     public async Task<IResult> Get(
         [FromQuery(Name = "name")] string? searchedName = null,
+        [FromHeader(Name = Constants.Translation.Header)]
+        string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default
     )
     {
-        var result = await _exercisesService.Get(searchedName, cancellationToken);
+        var result = await _exercisesService.Get(searchedName, language, cancellationToken);
 
         return Results.Ok(result);
     }
@@ -34,9 +37,13 @@ public class ExercisesController : ControllerBase
     [HttpGet(EndpointUrls.Exercises.GetById)]
     [ProducesResponseType<ApiResponse<ExerciseInfo>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
-    public async Task<IResult> GetById([FromRoute] Guid id, CancellationToken cancellationToken = default)
+    public async Task<IResult> GetById(
+        [FromRoute] Guid id,
+        [FromHeader(Name = Constants.Translation.Header)]
+        string language = Constants.Translation.Default,
+        CancellationToken cancellationToken = default)
     {
-        var result = await _exercisesService.GetById(id, cancellationToken);
+        var result = await _exercisesService.GetById(id, language, cancellationToken);
 
         return result.MatchFirst(
             Results.Ok,

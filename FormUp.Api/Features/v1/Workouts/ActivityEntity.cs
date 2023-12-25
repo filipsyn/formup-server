@@ -11,7 +11,7 @@ public class ActivityEntity : BaseEntity
     /// <summary>
     ///     Exercise performed.
     /// </summary>
-    public ExerciseEntity? Exercise { get; set; }
+    public ExerciseEntity Exercise { get; set; }
 
     /// <summary>
     ///     ID of performed exercise.
