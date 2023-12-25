@@ -4,6 +4,7 @@ using FormUp.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormUp.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231221154902_DefineRelationshipBetweenActivityAndExercise")]
+    partial class DefineRelationshipBetweenActivityAndExercise
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,30 +73,30 @@ namespace FormUp.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b9d61a45-a182-4644-9362-b197cc9b757d"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1660),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1720),
+                            Id = new Guid("9341a66e-dda8-4f26-a02e-01b2565bdb16"),
+                            CreatedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3900),
+                            ModifiedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3970),
                             Name = "Pull ups"
                         },
                         new
                         {
-                            Id = new Guid("da235ed0-2e56-4de8-8ad9-21f9f6be794a"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1730),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1730),
+                            Id = new Guid("e274ef28-8a34-4321-8cc6-ee89e384713f"),
+                            CreatedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3980),
+                            ModifiedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3980),
                             Name = "Push ups"
                         },
                         new
                         {
-                            Id = new Guid("fe1f1617-50d3-4aca-a01a-374ae3847bb2"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
+                            Id = new Guid("5e4ae2f1-afa5-48a0-a5e3-c072790afa99"),
+                            CreatedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3980),
+                            ModifiedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3980),
                             Name = "Body-weight squats"
                         },
                         new
                         {
-                            Id = new Guid("045adcda-457e-484b-9bd8-330cd3cefa2f"),
-                            CreatedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
-                            ModifiedAt = new DateTime(2023, 12, 21, 16, 53, 48, 755, DateTimeKind.Local).AddTicks(1740),
+                            Id = new Guid("459c307a-98dc-4591-b55e-de3e359a5269"),
+                            CreatedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3990),
+                            ModifiedAt = new DateTime(2023, 12, 21, 16, 49, 2, 565, DateTimeKind.Local).AddTicks(3990),
                             Name = "Dips"
                         });
                 });
@@ -123,38 +126,6 @@ namespace FormUp.Api.Migrations
                     b.HasIndex("LocationId");
 
                     b.ToTable("Gyms");
-                });
-
-            modelBuilder.Entity("FormUp.Api.Features.v1.Translations.TranslationEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Key")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Locale")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Locale", "Key");
-
-                    b.ToTable("Translations");
                 });
 
             modelBuilder.Entity("FormUp.Api.Features.v1.Workouts.ActivityEntity", b =>
@@ -187,9 +158,6 @@ namespace FormUp.Api.Migrations
                         .HasColumnType("real");
 
                     b.Property<Guid?>("WorkoutEntityId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("WorkoutId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -233,6 +201,26 @@ namespace FormUp.Api.Migrations
                         .HasForeignKey("LocationId");
 
                     b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("FormUp.Api.Features.v1.Workouts.ActivityEntity", b =>
+                {
+                    b.HasOne("FormUp.Api.Features.v1.Exercises.ExerciseEntity", "Exercise")
+                        .WithMany()
+                        .HasForeignKey("ExerciseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FormUp.Api.Features.v1.Workouts.WorkoutEntity", null)
+                        .WithMany("Activities")
+                        .HasForeignKey("WorkoutEntityId");
+
+                    b.Navigation("Exercise");
+                });
+
+            modelBuilder.Entity("FormUp.Api.Features.v1.Workouts.WorkoutEntity", b =>
+                {
+                    b.Navigation("Activities");
                 });
 #pragma warning restore 612, 618
         }

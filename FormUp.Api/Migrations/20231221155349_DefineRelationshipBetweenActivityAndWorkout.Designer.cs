@@ -4,6 +4,7 @@ using FormUp.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormUp.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20231221155349_DefineRelationshipBetweenActivityAndWorkout")]
+    partial class DefineRelationshipBetweenActivityAndWorkout
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,38 +128,6 @@ namespace FormUp.Api.Migrations
                     b.ToTable("Gyms");
                 });
 
-            modelBuilder.Entity("FormUp.Api.Features.v1.Translations.TranslationEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Key")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Locale")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Locale", "Key");
-
-                    b.ToTable("Translations");
-                });
-
             modelBuilder.Entity("FormUp.Api.Features.v1.Workouts.ActivityEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -233,6 +204,26 @@ namespace FormUp.Api.Migrations
                         .HasForeignKey("LocationId");
 
                     b.Navigation("Location");
+                });
+
+            modelBuilder.Entity("FormUp.Api.Features.v1.Workouts.ActivityEntity", b =>
+                {
+                    b.HasOne("FormUp.Api.Features.v1.Exercises.ExerciseEntity", "Exercise")
+                        .WithMany()
+                        .HasForeignKey("ExerciseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FormUp.Api.Features.v1.Workouts.WorkoutEntity", null)
+                        .WithMany("Activities")
+                        .HasForeignKey("WorkoutEntityId");
+
+                    b.Navigation("Exercise");
+                });
+
+            modelBuilder.Entity("FormUp.Api.Features.v1.Workouts.WorkoutEntity", b =>
+                {
+                    b.Navigation("Activities");
                 });
 #pragma warning restore 612, 618
         }
