@@ -42,5 +42,10 @@ public static class Constants
         /// </summary>
         /// <remarks>This application uses English as its default translation.</remarks>
         public const string Default = English;
+
+        /// <summary>
+        ///     Specifies name of header that declares language of response.
+        /// </summary>
+        public const string Header = "Content-Language";
     }
 }

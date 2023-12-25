@@ -24,7 +24,7 @@ public class ExercisesController : ControllerBase
     [ProducesResponseType<ApiResponse<IList<ExerciseInfo>>>(StatusCodes.Status200OK)]
     public async Task<IResult> Get(
         [FromQuery(Name = "name")] string? searchedName = null,
-        [FromHeader(Name = "Content-Language")]
+        [FromHeader(Name = Constants.Translation.Header)]
         string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default
     )
@@ -39,7 +39,7 @@ public class ExercisesController : ControllerBase
     [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
     public async Task<IResult> GetById(
         [FromRoute] Guid id,
-        [FromHeader(Name = "Content-Language")]
+        [FromHeader(Name = Constants.Translation.Header)]
         string language = Constants.Translation.Default,
         CancellationToken cancellationToken = default)
     {
