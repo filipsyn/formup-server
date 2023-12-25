@@ -23,10 +23,12 @@ public class ExercisesController : ControllerBase
     [ProducesResponseType<ApiResponse<IList<ExerciseInfo>>>(StatusCodes.Status200OK)]
     public async Task<IResult> Get(
         [FromQuery(Name = "name")] string? searchedName = null,
+        [FromHeader(Name = "Content-Language")]
+        string language = "en",
         CancellationToken cancellationToken = default
     )
     {
-        var result = await _exercisesService.Get(searchedName, cancellationToken);
+        var result = await _exercisesService.Get(searchedName, language, cancellationToken);
 
         return Results.Ok(result);
     }
