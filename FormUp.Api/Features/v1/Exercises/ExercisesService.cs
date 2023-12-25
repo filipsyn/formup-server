@@ -28,21 +28,6 @@ internal class ExercisesService : IExercisesService
     }
 
     /// <inheritdoc />
-    public async Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(Guid id,
-        CancellationToken cancellationToken = default)
-    {
-        var exercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
-
-        if (exercise is null)
-        {
-            _logger.LogError("Exercise with ID {@Id} was not found", id);
-            return ExerciseErrors.NotFound(id);
-        }
-
-        return ApiResponse<ExerciseInfo>.Ok(exercise.ToExerciseInfo());
-    }
-
-    /// <inheritdoc />
     public async Task<ApiResponse<IList<ExerciseInfo>>> Get(
         string? searchedName = null,
         string language = "en",
@@ -67,5 +52,24 @@ internal class ExercisesService : IExercisesService
             .ToList();
 
         return ApiResponse<IList<ExerciseInfo>>.Ok(result);
+    }
+
+    /// <inheritdoc />
+    public async Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(
+        Guid id,
+        string language = "en",
+        CancellationToken cancellationToken = default)
+    {
+        var exercise = await _context.Exercises.FirstOrDefaultAsync(e => e.Id == id, cancellationToken);
+
+        if (exercise is null)
+        {
+            _logger.LogError("Exercise with ID {@Id} was not found", id);
+            return ExerciseErrors.NotFound(id);
+        }
+
+        await _translationService.ApplyTranslation(exercise, e => nameof(e.Name), language);
+
+        return ApiResponse<ExerciseInfo>.Ok(exercise.ToExerciseInfo());
     }
 }

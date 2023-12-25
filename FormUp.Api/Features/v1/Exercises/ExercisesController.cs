@@ -36,9 +36,12 @@ public class ExercisesController : ControllerBase
     [HttpGet(EndpointUrls.Exercises.GetById)]
     [ProducesResponseType<ApiResponse<ExerciseInfo>>(StatusCodes.Status200OK)]
     [ProducesResponseType<ApiResponse>(StatusCodes.Status404NotFound)]
-    public async Task<IResult> GetById([FromRoute] Guid id, CancellationToken cancellationToken = default)
+    public async Task<IResult> GetById(
+        [FromRoute] Guid id,
+        [FromHeader(Name = "Content-Language")] string language = "en",
+        CancellationToken cancellationToken = default)
     {
-        var result = await _exercisesService.GetById(id, cancellationToken);
+        var result = await _exercisesService.GetById(id, language, cancellationToken);
 
         return result.MatchFirst(
             Results.Ok,

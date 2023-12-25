@@ -23,5 +23,8 @@ public interface IExercisesService
     /// <summary>
     ///     Retrieves exercise by its id.
     /// </summary>
-    Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(Guid id, CancellationToken cancellationToken = default);
+    Task<ErrorOr<ApiResponse<ExerciseInfo>>> GetById(
+        Guid id,
+        string language = "en",
+        CancellationToken cancellationToken = default);
 }
