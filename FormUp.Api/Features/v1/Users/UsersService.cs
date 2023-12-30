@@ -82,6 +82,16 @@ public class UsersService : IUsersService
             .Where(w => w.Uid == uid)
             .ToListAsync(cancellationToken);
 
+        if (from is not null)
+        {
+            heights = heights.Where(h => h.At >= from).ToList();
+        }
+
+        if (to is not null)
+        {
+            heights = heights.Where(h => h.At <= to).ToList();
+        }
+
         IList<HeightLogResponse> result = heights
             .Select(h => h.ToHeightLogResponse())
             .ToList();
