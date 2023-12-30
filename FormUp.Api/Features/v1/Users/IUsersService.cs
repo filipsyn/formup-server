@@ -16,12 +16,10 @@ public interface IUsersService
         CancellationToken cancellationToken = default
     );
 
-    Task<ErrorOr<ApiResponse<IList<HeightLogResponse>>>> GetHeights(
-        string uid,
+    Task<ApiResponse<IList<HeightLogResponse>>> GetHeights(string uid,
         DateTime? from = null,
         DateTime? to = null,
-        CancellationToken cancellationToken = default
-    );
+        CancellationToken cancellationToken = default);
 
     Task<ErrorOr<ApiResponse<CreateUserResponse>>> Create(CreateUserRequest request,
         CancellationToken cancellationToken = default);

@@ -72,8 +72,7 @@ public class UsersService : IUsersService
             $"Successfully retrieved {result.Count} weight logs for user with uid {uid}.");
     }
 
-    public async Task<ErrorOr<ApiResponse<IList<HeightLogResponse>>>> GetHeights(
-        string uid,
+    public async Task<ApiResponse<IList<HeightLogResponse>>> GetHeights(string uid,
         DateTime? from = null,
         DateTime? to = null,
         CancellationToken cancellationToken = default)
