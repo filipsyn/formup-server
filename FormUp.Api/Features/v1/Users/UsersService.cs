@@ -72,7 +72,8 @@ public class UsersService : IUsersService
             $"Successfully retrieved {result.Count} weight logs for user with uid {uid}.");
     }
 
-    public async Task<ApiResponse<IList<HeightLogResponse>>> GetHeights(string uid,
+    public async Task<ApiResponse<IList<HeightLogResponse>>> GetHeights(
+        string uid,
         DateTime? from = null,
         DateTime? to = null,
         CancellationToken cancellationToken = default)
@@ -100,7 +101,8 @@ public class UsersService : IUsersService
             $"Successfully retrieved {result.Count} height logs for user with uid {uid}.");
     }
 
-    public async Task<ErrorOr<ApiResponse<CreateUserResponse>>> Create(CreateUserRequest request,
+    public async Task<ErrorOr<ApiResponse<CreateUserResponse>>> Create(
+        CreateUserRequest request,
         CancellationToken cancellationToken = default)
     {
         var newUser = request.ToEntity();
@@ -131,7 +133,9 @@ public class UsersService : IUsersService
             $"User with Uid {newUser.Uid} was successfully created.");
     }
 
-    public async Task<ErrorOr<ApiResponse>> LogWeight(string uid, CreateWeightLogEntryRequest request,
+    public async Task<ErrorOr<ApiResponse>> LogWeight(
+        string uid,
+        CreateWeightLogEntryRequest request,
         CancellationToken cancellationToken = default)
     {
         var newLogEntry = request.ToEntity(uid);
