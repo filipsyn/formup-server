@@ -12,7 +12,7 @@ public static class UserErrors
         Error.Failure($"{FeaturePrefix}:{nameof(CreationFailure)}", "Unable to create user");
 
     public static Error WeightLogFailure =>
-        Error.Failure($"{FeaturePrefix}:{nameof(WeightLogFailure)}", "Could not add with weight log entry");
+        Error.Failure($"{FeaturePrefix}:{nameof(WeightLogFailure)}", "Could not add weight log entry");
 
     public static Error HeightLogFailure =>
         Error.Failure($"{FeaturePrefix}:{nameof(HeightLogFailure)}", "Could not add height log entry");
