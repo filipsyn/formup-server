@@ -41,6 +41,18 @@ public class UsersController : ControllerBase
         return Results.Ok(result);
     }
 
+    [HttpGet(EndpointUrls.Users.GetHeights)]
+    public async Task<IResult> GetHeights(
+        string uid,
+        DateTime? from = null,
+        DateTime? to = null,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await _usersService.GetHeights(uid, from, to, cancellationToken);
+
+        return Results.Ok(result);
+    }
+
     [HttpPost(EndpointUrls.Users.Create)]
     public async Task<IResult> Create(CreateUserRequest request, CancellationToken cancellationToken = default)
     {
