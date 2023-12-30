@@ -1,5 +1,6 @@
 using FormUp.Api.Common.Extensions;
 using FormUp.Api.Features.v1.Shared;
+using FormUp.Contracts.v1.Users;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,17 @@ public class UsersController : ControllerBase
 
         return result.MatchFirst(
             Results.Ok,
+            error => error.ToResponse()
+        );
+    }
+
+    [HttpPost(EndpointUrls.Users.Create)]
+    public async Task<IResult> Create(CreateUserRequest request, CancellationToken cancellationToken = default)
+    {
+        var result = await _usersService.Create(request, cancellationToken);
+
+        return result.MatchFirst(
+            response => Results.Created(null as string, response),
             error => error.ToResponse()
         );
     }

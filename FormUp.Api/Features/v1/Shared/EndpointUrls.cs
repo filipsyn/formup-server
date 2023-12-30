@@ -98,5 +98,7 @@ internal static class EndpointUrls
         public const string GroupUrl = $"{Prefix}/users";
 
         public const string GetByUid = "{uid}";
+
+        public const string Create = "";
     }
 }
