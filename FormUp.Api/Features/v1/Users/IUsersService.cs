@@ -23,7 +23,8 @@ public interface IUsersService
         CancellationToken cancellationToken = default
     );
 
-    Task<ErrorOr<ApiResponse<string>>> Create(CreateUserRequest request, CancellationToken cancellationToken = default);
+    Task<ErrorOr<ApiResponse<CreateUserResponse>>> Create(CreateUserRequest request,
+        CancellationToken cancellationToken = default);
 
     Task<ErrorOr<ApiResponse>> LogWeight(
         string uid,

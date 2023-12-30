@@ -57,10 +57,35 @@ public class UsersService : IUsersService
         throw new NotImplementedException();
     }
 
-    public async Task<ErrorOr<ApiResponse<string>>> Create(CreateUserRequest request,
+    public async Task<ErrorOr<ApiResponse<CreateUserResponse>>> Create(CreateUserRequest request,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var newUser = request.ToEntity();
+
+        try
+        {
+            await _context.Users.AddAsync(newUser, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Unable to save newly created user to database");
+            return UserErrors.CreationFailure;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogError(ex, "Attempt to add user was canceled");
+            return UserErrors.CreationFailure;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unhandled exception has been raised during attempt to create new user");
+            return UserErrors.CreationFailure;
+        }
+
+        return ApiResponse<CreateUserResponse>.Created(
+            new CreateUserResponse { Uid = newUser.Uid },
+            $"User with Uid {newUser.Uid} was successfully created.");
     }
 
     public async Task<ErrorOr<ApiResponse>> LogWeight(string uid, CreateWeightLogRequest request,

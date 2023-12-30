@@ -15,4 +15,9 @@ public static class UserEntityMappingExtensions
             Uid = entity.Uid, DisplayName = entity.DisplayName, Height = height?.Value, Weight = weight?.Value
         };
     }
+
+    public static UserEntity ToEntity(this CreateUserRequest request)
+    {
+        return new UserEntity { Uid = request.Uid, DisplayName = request.DisplayName };
+    }
 }

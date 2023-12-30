@@ -7,4 +7,5 @@ public static class UserErrors
     private const string FeaturePrefix = nameof(UserErrors);
 
     public static Error NotFound => Error.NotFound($"{FeaturePrefix}:NotFound", "User was not found");
+    public static Error CreationFailure => Error.Failure($"{FeaturePrefix}:CreationFailure", "Unable to create user");
 }
