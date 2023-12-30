@@ -34,7 +34,7 @@ public interface IUsersService
 
     Task<ErrorOr<ApiResponse>> LogHeight(
         string uid,
-        CreateHeightLogRequest request,
+        CreateHeightLogEntryRequest request,
         CancellationToken cancellationToken = default
     );
 

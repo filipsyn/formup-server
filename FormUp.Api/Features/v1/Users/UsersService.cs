@@ -118,7 +118,7 @@ public class UsersService : IUsersService
             $"Successfully logged {newLogEntry.Value} kgs measured at {newLogEntry.At} for user {newLogEntry.Uid}");
     }
 
-    public async Task<ErrorOr<ApiResponse>> LogHeight(string uid, CreateHeightLogRequest request,
+    public async Task<ErrorOr<ApiResponse>> LogHeight(string uid, CreateHeightLogEntryRequest request,
         CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
