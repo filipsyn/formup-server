@@ -45,10 +45,31 @@ public class UsersService : IUsersService
             $"Successfully retrieved info about user with uid {uid}");
     }
 
-    public async Task<ApiResponse<IList<WeightLogResponse>>> GetWeights(string uid, DateTime? from = null,
-        DateTime? to = null, CancellationToken cancellationToken = default)
+    public async Task<ApiResponse<IList<WeightLogResponse>>> GetWeights(
+        string uid,
+        DateTime? from = null,
+        DateTime? to = null,
+        CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var weights = await _context.Weights
+            .Where(w => w.Uid == uid).ToListAsync(cancellationToken);
+
+        if (from is not null)
+        {
+            weights = weights.Where(w => w.At >= from).ToList();
+        }
+
+        if (to is not null)
+        {
+            weights = weights.Where(w => w.At <= to).ToList();
+        }
+
+        IList<WeightLogResponse> result = weights
+            .Select(w => w.ToWeightLogResponse())
+            .ToList();
+
+        return ApiResponse<IList<WeightLogResponse>>.Ok(result,
+            $"Successfully retrieved {result.Count} weight logs for user with uid {uid}.");
     }
 
     public async Task<ErrorOr<ApiResponse<IList<HeightLogResponse>>>> GetHeights(string uid, DateTime? from = null,

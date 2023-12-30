@@ -9,4 +9,9 @@ public static class WeightLogEntityMappingExtensions
     {
         return new WeightLogEntity { Value = request.Value, At = request.At, Uid = uid };
     }
+
+    public static WeightLogResponse ToWeightLogResponse(this WeightLogEntity entity)
+    {
+        return new WeightLogResponse { Value = entity.Value, At = entity.At };
+    }
 }
