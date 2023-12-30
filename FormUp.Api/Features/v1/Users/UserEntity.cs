@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FormUp.Api.Features.v1.Users;
 
-[Index(nameof(Uid))]
+[Index(nameof(Uid), IsUnique = true)]
 public class UserEntity : BaseEntity
 {
     public string Uid { get; set; } = string.Empty;
