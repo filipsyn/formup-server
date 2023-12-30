@@ -195,6 +195,32 @@ public class UsersService : IUsersService
 
     public async Task<ErrorOr<ApiResponse>> Delete(string uid, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == uid, cancellationToken);
+        if (user is null)
+        {
+            _logger.LogWarning("Could not find user with uid {Uid}", uid);
+            return UserErrors.NotFound;
+        }
+
+        _context.Users.Remove(user);
+
+        int changedRowsCount;
+
+        try
+        {
+            changedRowsCount = await _context.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Deletion of workout couldn't be processed on the database level");
+            return UserErrors.DeletionFailure;
+        }
+
+        if (changedRowsCount is not 1)
+        {
+            return UserErrors.DeletionFailure;
+        }
+
+        return ApiResponse.NoContent();
     }
 }
