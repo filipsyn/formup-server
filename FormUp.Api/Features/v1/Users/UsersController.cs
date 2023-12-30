@@ -89,4 +89,15 @@ public class UsersController : ControllerBase
             error => error.ToResponse()
         );
     }
+
+    [HttpDelete(EndpointUrls.Users.Delete)]
+    public async Task<IResult> Delete(string uid, CancellationToken cancellationToken = default)
+    {
+        var result = await _usersService.Delete(uid, cancellationToken);
+
+        return result.MatchFirst(
+            _ => Results.NoContent(),
+            error => error.ToResponse()
+        );
+    }
 }

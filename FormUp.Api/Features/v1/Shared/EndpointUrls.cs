@@ -108,5 +108,7 @@ internal static class EndpointUrls
         public const string LogHeight = "{uid}/height";
 
         public const string GetHeights = "{uid}/height";
+
+        public const string Delete = "{uid}";
     }
 }
