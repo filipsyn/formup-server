@@ -29,6 +29,18 @@ public class UsersController : ControllerBase
         );
     }
 
+    [HttpGet(EndpointUrls.Users.GetWeights)]
+    public async Task<IResult> GetWeights(
+        [FromRoute] string uid,
+        [FromQuery] DateTime? from = null,
+        [FromQuery] DateTime? to = null,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await _usersService.GetWeights(uid, from, to, cancellationToken);
+
+        return Results.Ok(result);
+    }
+
     [HttpPost(EndpointUrls.Users.Create)]
     public async Task<IResult> Create(CreateUserRequest request, CancellationToken cancellationToken = default)
     {
