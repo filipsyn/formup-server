@@ -3,6 +3,7 @@ using FormUp.Api.Data.Configuration;
 using FormUp.Api.Features.v1.Exercises;
 using FormUp.Api.Features.v1.Gyms;
 using FormUp.Api.Features.v1.Translations;
+using FormUp.Api.Features.v1.Users;
 using FormUp.Api.Features.v1.Workouts;
 
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,9 @@ public class DataContext : DbContext
     public DbSet<ExerciseEntity> Exercises => Set<ExerciseEntity>();
     public DbSet<ActivityEntity> Activities => Set<ActivityEntity>();
     public DbSet<WorkoutEntity> Workouts => Set<WorkoutEntity>();
+    public DbSet<UserEntity> Users => Set<UserEntity>();
+    public DbSet<WeightLogEntity> Weights => Set<WeightLogEntity>();
+    public DbSet<HeightLogEntity> Heights => Set<HeightLogEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
