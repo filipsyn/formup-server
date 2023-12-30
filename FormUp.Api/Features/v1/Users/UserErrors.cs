@@ -16,4 +16,7 @@ public static class UserErrors
 
     public static Error HeightLogFailure =>
         Error.Failure($"{FeaturePrefix}:{nameof(HeightLogFailure)}", "Could not add height log entry");
+
+    public static Error DeletionFailure =>
+        Error.Failure($"{FeaturePrefix}:{nameof(DeletionFailure)}", "Unable to delete user.");
 }
