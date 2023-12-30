@@ -9,4 +9,9 @@ public static class HeightLogEntityMappingExtensions
     {
         return new HeightLogEntity { Value = request.Value, At = request.At, Uid = uid };
     }
+
+    public static HeightLogResponse ToHeightLogResponse(this HeightLogEntity entity)
+    {
+        return new HeightLogResponse { Value = entity.Value, At = entity.At };
+    }
 }
