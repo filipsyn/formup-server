@@ -92,4 +92,11 @@ internal static class EndpointUrls
         /// </summary>
         public const string Delete = "{id:guid}";
     }
+
+    public static class Users
+    {
+        public const string GroupUrl = $"{Prefix}/users";
+
+        public const string GetByUid = "{uid}";
+    }
 }
