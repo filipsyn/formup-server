@@ -39,4 +39,16 @@ public class UsersController : ControllerBase
             error => error.ToResponse()
         );
     }
+
+    [HttpPost(EndpointUrls.Users.LogWeight)]
+    public async Task<IResult> LogWeight([FromRoute] string uid, CreateWeightLogEntryRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await _usersService.LogWeight(uid, request, cancellationToken);
+
+        return result.MatchFirst(
+            response => Results.Created(null as string, response),
+            error => error.ToResponse()
+        );
+    }
 }

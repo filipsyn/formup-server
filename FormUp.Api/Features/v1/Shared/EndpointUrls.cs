@@ -100,5 +100,7 @@ internal static class EndpointUrls
         public const string GetByUid = "{uid}";
 
         public const string Create = "";
+
+        public const string LogWeight = "{uid}/weight";
     }
 }
