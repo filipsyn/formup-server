@@ -51,4 +51,18 @@ public class UsersController : ControllerBase
             error => error.ToResponse()
         );
     }
+
+    [HttpPost(EndpointUrls.Users.LogHeight)]
+    public async Task<IResult> LogHeight(
+        [FromRoute] string uid,
+        CreateHeightLogEntryRequest request,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await _usersService.LogHeight(uid, request, cancellationToken);
+
+        return result.MatchFirst(
+            response => Results.Created(null as string, response),
+            error => error.ToResponse()
+        );
+    }
 }
