@@ -9,12 +9,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FormUp.Api.Features.v1.Users;
 
-public class UserService : IUsersService
+public class UsersService : IUsersService
 {
     private readonly DataContext _context;
-    private readonly ILogger<UserService> _logger;
+    private readonly ILogger<UsersService> _logger;
 
-    public UserService(DataContext context, ILogger<UserService> logger)
+    public UsersService(DataContext context, ILogger<UsersService> logger)
     {
         _context = context;
         _logger = logger;

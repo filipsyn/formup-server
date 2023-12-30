@@ -38,7 +38,7 @@ builder.Services.AddScoped<IGymsService, GymsService>();
 builder.Services.AddScoped<IExercisesService, ExercisesService>();
 builder.Services.AddScoped<IWorkoutsService, WorkoutsService>();
 builder.Services.AddScoped<ITranslationService, TranslationService>();
-builder.Services.AddScoped<IUsersService, UserService>();
+builder.Services.AddScoped<IUsersService, UsersService>();
 
 builder.Services.AddControllers();
 
