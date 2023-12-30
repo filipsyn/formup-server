@@ -118,10 +118,36 @@ public class UsersService : IUsersService
             $"Successfully logged {newLogEntry.Value} kgs measured at {newLogEntry.At} for user {newLogEntry.Uid}");
     }
 
-    public async Task<ErrorOr<ApiResponse>> LogHeight(string uid, CreateHeightLogEntryRequest request,
+    public async Task<ErrorOr<ApiResponse>> LogHeight(
+        string uid,
+        CreateHeightLogEntryRequest request,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var newLogEntry = request.ToEntity(uid);
+
+        try
+        {
+            await _context.Heights.AddAsync(newLogEntry, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+        }
+        catch (DbUpdateException ex)
+        {
+            _logger.LogError(ex, "Could not add with height log entry");
+            return UserErrors.HeightLogFailure;
+        }
+        catch (OperationCanceledException ex)
+        {
+            _logger.LogError(ex, "Attempt to add height log entry was canceled");
+            return UserErrors.HeightLogFailure;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Unhandled exception has been raised during attempt to log height entry");
+            return UserErrors.HeightLogFailure;
+        }
+
+        return ApiResponse.Created(
+            $"Successfully logged {newLogEntry.Value} cms measured at {newLogEntry.At} for user {newLogEntry.Uid}");
     }
 
     public async Task<ErrorOr<ApiResponse>> Delete(string uid, CancellationToken cancellationToken = default)
