@@ -28,7 +28,7 @@ public interface IUsersService
 
     Task<ErrorOr<ApiResponse>> LogWeight(
         string uid,
-        CreateWeightLogRequest request,
+        CreateWeightLogEntryRequest request,
         CancellationToken cancellationToken = default
     );
 
