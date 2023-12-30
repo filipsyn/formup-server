@@ -3,6 +3,7 @@ using FormUp.Api.Data;
 using FormUp.Api.Features.v1.Exercises;
 using FormUp.Api.Features.v1.Gyms;
 using FormUp.Api.Features.v1.Translations;
+using FormUp.Api.Features.v1.Users;
 using FormUp.Api.Features.v1.Workouts;
 
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +38,7 @@ builder.Services.AddScoped<IGymsService, GymsService>();
 builder.Services.AddScoped<IExercisesService, ExercisesService>();
 builder.Services.AddScoped<IWorkoutsService, WorkoutsService>();
 builder.Services.AddScoped<ITranslationService, TranslationService>();
+builder.Services.AddScoped<IUsersService, UserService>();
 
 builder.Services.AddControllers();
 
