@@ -72,10 +72,23 @@ public class UsersService : IUsersService
             $"Successfully retrieved {result.Count} weight logs for user with uid {uid}.");
     }
 
-    public async Task<ErrorOr<ApiResponse<IList<HeightLogResponse>>>> GetHeights(string uid, DateTime? from = null,
-        DateTime? to = null, CancellationToken cancellationToken = default)
+    public async Task<ErrorOr<ApiResponse<IList<HeightLogResponse>>>> GetHeights(
+        string uid,
+        DateTime? from = null,
+        DateTime? to = null,
+        CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        var heights = await _context.Heights
+            .Where(w => w.Uid == uid)
+            .ToListAsync(cancellationToken);
+
+        IList<HeightLogResponse> result = heights
+            .Select(h => h.ToHeightLogResponse())
+            .ToList();
+
+        return ApiResponse<IList<HeightLogResponse>>.Ok(
+            result,
+            $"Successfully retrieved {result.Count} height logs for user with uid {uid}.");
     }
 
     public async Task<ErrorOr<ApiResponse<CreateUserResponse>>> Create(CreateUserRequest request,
