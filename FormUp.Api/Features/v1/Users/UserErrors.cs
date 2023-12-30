@@ -11,4 +11,7 @@ public static class UserErrors
 
     public static Error WeightLogFailure =>
         Error.Failure($"{FeaturePrefix}:WeightLogFailure", "Could not add with weight log entry");
+
+    public static Error HeightLogFailure =>
+        Error.Failure($"{FeaturePrefix}:{nameof(HeightLogFailure)}", "Could not add height log entry");
 }
