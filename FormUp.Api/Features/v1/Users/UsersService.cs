@@ -107,10 +107,23 @@ public class UsersService : IUsersService
     {
         var newUser = request.ToEntity();
 
+        ErrorOr<ApiResponse> heightLog;
+        ErrorOr<ApiResponse> weightLog;
+
         try
         {
             await _context.Users.AddAsync(newUser, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
+
+            heightLog = await LogHeight(
+                request.Uid,
+                new CreateHeightLogEntryRequest { At = DateTime.Now, Value = request.Height },
+                cancellationToken);
+
+            weightLog = await LogWeight(
+                request.Uid,
+                new CreateWeightLogEntryRequest { At = DateTime.Now, Value = request.Weight },
+                cancellationToken);
         }
         catch (DbUpdateException ex)
         {
@@ -125,6 +138,12 @@ public class UsersService : IUsersService
         catch (Exception ex)
         {
             _logger.LogError(ex, "Unhandled exception has been raised during attempt to create new user");
+            return UserErrors.CreationFailure;
+        }
+
+        if (heightLog.IsError || weightLog.IsError)
+        {
+            _logger.LogError("Unable to insert weight or height on created user");
             return UserErrors.CreationFailure;
         }
 
