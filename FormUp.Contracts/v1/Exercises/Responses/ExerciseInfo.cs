@@ -14,4 +14,6 @@ public record ExerciseInfo
     ///     Name of exercise.
     /// </summary>
     public required string Name { get; set; }
+
+    public string? ImageURL { get; set; } = null;
 }
