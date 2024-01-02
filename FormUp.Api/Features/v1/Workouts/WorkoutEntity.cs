@@ -18,6 +18,16 @@ public class WorkoutEntity : BaseEntity
     public DateTime At { get; set; } = DateTime.Now;
 
     /// <summary>
+    ///     Name of the workout.
+    /// </summary>
+    public string? Name { get; set; } = String.Empty;
+
+    /// <summary>
+    ///     Description of the workout.
+    /// </summary>
+    public string Description { get; set; } = string.Empty;
+
+    /// <summary>
     ///     Activities performed during workout.
     /// </summary>
     public IList<ActivityEntity> Activities { get; set; } = new List<ActivityEntity>();
