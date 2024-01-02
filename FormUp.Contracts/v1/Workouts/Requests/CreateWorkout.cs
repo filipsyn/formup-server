@@ -4,5 +4,7 @@ public record CreateWorkout
 {
     public required string UserId { get; set; }
     public required DateTime At { get; set; } = DateTime.Now;
+    public string? Name { get; set; } = String.Empty;
+    public string Description { get; set; } = string.Empty;
     public IList<CreateActivity> Activities { get; set; } = new List<CreateActivity>();
 }

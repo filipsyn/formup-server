@@ -13,6 +13,8 @@ public static class WorkoutEntityMappingExtensions
             Id = entity.Id,
             At = entity.At,
             UserId = entity.UserId,
+            Name = entity.Name,
+            Description = entity.Description,
             Activities = entity.Activities.Select(a => a.ToActivityInfo()).ToList()
         };
     }
@@ -23,6 +25,8 @@ public static class WorkoutEntityMappingExtensions
         {
             UserId = contract.UserId,
             At = contract.At,
+            Name = contract.Name,
+            Description = contract.Description,
             Activities =
                 contract.Activities.Select(a => a.ToEntity()).ToList()
         };
