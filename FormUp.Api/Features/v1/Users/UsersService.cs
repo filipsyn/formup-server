@@ -117,12 +117,12 @@ public class UsersService : IUsersService
 
             heightLog = await LogHeight(
                 request.Uid,
-                new CreateHeightLogEntryRequest { At = DateTime.Now, Value = request.Height },
+                new CreateHeightLogEntryRequest { At = DateTime.UtcNow, Value = request.Height },
                 cancellationToken);
 
             weightLog = await LogWeight(
                 request.Uid,
-                new CreateWeightLogEntryRequest { At = DateTime.Now, Value = request.Weight },
+                new CreateWeightLogEntryRequest { At = DateTime.UtcNow, Value = request.Weight },
                 cancellationToken);
         }
         catch (DbUpdateException ex)
