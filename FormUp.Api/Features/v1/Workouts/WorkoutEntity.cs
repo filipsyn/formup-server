@@ -15,7 +15,7 @@ public class WorkoutEntity : BaseEntity
     /// <summary>
     ///     Date and time when workout took place.
     /// </summary>
-    public DateTime At { get; set; } = DateTime.Now;
+    public DateTime At { get; set; } = DateTime.UtcNow;
 
     /// <summary>
     ///     Name of the workout.

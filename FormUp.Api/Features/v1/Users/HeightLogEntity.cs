@@ -9,5 +9,5 @@ public class HeightLogEntity : BaseEntity
 {
     public string Uid { get; set; } = string.Empty;
     public float Value { get; set; }
-    public DateTime At { get; set; } = DateTime.Now;
+    public DateTime At { get; set; } = DateTime.UtcNow;
 }

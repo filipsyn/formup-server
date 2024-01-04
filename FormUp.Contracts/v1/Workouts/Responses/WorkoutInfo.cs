@@ -28,7 +28,7 @@ public record WorkoutInfo
     /// <summary>
     ///     Date and time when workout took place.
     /// </summary>
-    public DateTime At { get; init; } = DateTime.Now;
+    public DateTime At { get; init; } = DateTime.UtcNow;
 
     /// <summary>
     ///     Activities performed during workout.

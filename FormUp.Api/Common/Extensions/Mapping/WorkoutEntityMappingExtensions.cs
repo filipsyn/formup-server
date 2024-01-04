@@ -36,7 +36,7 @@ public static class WorkoutEntityMappingExtensions
     {
         entity.At = contract.At;
         entity.UserId = contract.UserId;
-        entity.ModifiedAt = DateTime.Now;
+        entity.ModifiedAt = DateTime.UtcNow;
         entity.Activities = contract.Activities.Select(a => a.ToEntity()).ToList();
     }
 }

@@ -17,10 +17,10 @@ public abstract class BaseEntity
     /// <summary>
     ///     Timestamp of when entity was created.
     /// </summary>
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     /// <summary>
     ///     Timestamp of last modification of entity.
     /// </summary>
-    public DateTime ModifiedAt { get; set; } = DateTime.Now;
+    public DateTime ModifiedAt { get; set; } = DateTime.UtcNow;
 }
