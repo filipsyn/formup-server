@@ -28,5 +28,6 @@ public class DataContext : DbContext
     {
         modelBuilder.ApplyConfiguration(new ExercisesEntityConfiguration());
         modelBuilder.ApplyConfiguration(new TranslationsEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new GymEntityConfiguration());
     }
 }
