@@ -34,7 +34,6 @@ internal class GymsService : IGymsService
             .OrderBy(g => g.Name)
             .Skip(skip)
             .Take(take)
-            .Include(g => g.Location)
             .Select(g => g.ToGymInfo())
             .ToListAsync(cancellationToken);
 
@@ -50,7 +49,6 @@ internal class GymsService : IGymsService
     public async Task<ErrorOr<ApiResponse<GymInfo>>> GetById(Guid id, CancellationToken cancellationToken = default)
     {
         var gym = await _context.Gyms
-            .Include(g => g.Location)
             .FirstOrDefaultAsync(g => g.Id == id, cancellationToken);
 
         if (gym is null)

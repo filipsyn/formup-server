@@ -13,6 +13,11 @@ public static class GymEntityMappingExtensions
     /// </summary>
     public static GymInfo ToGymInfo(this GymEntity entity)
     {
-        return new GymInfo { Id = entity.Id, Name = entity.Name, Location = entity.Location?.ToGeolocationInfo() };
+        return new GymInfo
+        {
+            Id = entity.Id,
+            Name = entity.Name,
+            Location = new GeolocationInfo { Latitude = entity.Latitude, Longitude = entity.Longitude }
+        };
     }
 }
