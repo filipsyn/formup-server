@@ -5,7 +5,7 @@ namespace FormUp.Api.Features.v1.Gyms;
 /// <summary>
 ///     An entity representing Gym in database.
 /// </summary>
-public class GymEntity : BaseEntity
+public class GymEntity : BaseEntity, ILocalizable
 {
     /// <summary>
     ///     A name of gym.
@@ -13,7 +13,12 @@ public class GymEntity : BaseEntity
     public string Name { get; set; } = string.Empty;
 
     /// <summary>
-    ///     Coordinates of gym.
+    ///     Latitude of gym
     /// </summary>
-    public GeolocationEntity? Location { get; set; }
+    public double Latitude { get; set; }
+
+    /// <summary>
+    ///     Longitude of gym.
+    /// </summary>
+    public double Longitude { get; set; }
 }
