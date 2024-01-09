@@ -15,7 +15,8 @@ public static class WorkoutEntityMappingExtensions
             UserId = entity.UserId,
             Name = entity.Name,
             Description = entity.Description,
-            Activities = entity.Activities.Select(a => a.ToActivityInfo()).ToList()
+            Activities = entity.Activities.Select(a => a.ToActivityInfo()).ToList(),
+            VerifiedAtGymId = entity.VerifiedAtGymId
         };
     }
 
@@ -28,7 +29,8 @@ public static class WorkoutEntityMappingExtensions
             Name = contract.Name,
             Description = contract.Description,
             Activities =
-                contract.Activities.Select(a => a.ToEntity()).ToList()
+                contract.Activities.Select(a => a.ToEntity()).ToList(),
+            VerifiedAtGymId = contract.VerifiedAtGymId
         };
     }
 

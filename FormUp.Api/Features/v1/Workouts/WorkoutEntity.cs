@@ -1,4 +1,5 @@
 using FormUp.Api.Common.Persistence;
+using FormUp.Api.Features.v1.Gyms;
 
 namespace FormUp.Api.Features.v1.Workouts;
 
@@ -31,4 +32,12 @@ public class WorkoutEntity : BaseEntity
     ///     Activities performed during workout.
     /// </summary>
     public IList<ActivityEntity> Activities { get; set; } = new List<ActivityEntity>();
+
+    /// <summary>
+    ///     <see cref="GymEntity.Id" /> of <see cref="GymEntity" /> at which the workout has been verified.
+    /// </summary>
+    /// <remarks>
+    ///     If value is <c>null</c> that means, given workout has not been verified.
+    /// </remarks>
+    public Guid? VerifiedAtGymId { get; set; } = null;
 }

@@ -34,4 +34,6 @@ public record WorkoutInfo
     ///     Activities performed during workout.
     /// </summary>
     public IList<ActivityInfo> Activities { get; init; } = new List<ActivityInfo>();
+
+    public Guid? VerifiedAtGymId { get; set; } = null;
 }

@@ -7,4 +7,5 @@ public record CreateWorkout
     public string? Name { get; set; } = String.Empty;
     public string Description { get; set; } = string.Empty;
     public IList<CreateActivity> Activities { get; set; } = new List<CreateActivity>();
+    public Guid? VerifiedAtGymId { get; set; } = null;
 }
