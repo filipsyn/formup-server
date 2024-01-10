@@ -78,16 +78,16 @@ internal class WorkoutsService : IWorkoutsService
         int take = Constants.List.DefaultPageSize,
         CancellationToken cancellationToken = default)
     {
-        var usersWorkouts = _context.Workouts
-            .Where(w => w.UserId == userId);
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Uid == userId);
 
-        if (!usersWorkouts.Any())
+        if (user is null)
         {
-            _logger.LogError("User with ID {ID} has no logged workouts", userId);
+            _logger.LogError("User with ID {ID} was not found", userId);
             return WorkoutErrors.UserNotFound(userId);
         }
 
-        IList<WorkoutInfo> result = await usersWorkouts
+        IList<WorkoutInfo> result = await _context.Workouts
+            .Where(w => w.UserId == userId)
             .OrderByDescending(w => w.At)
             .Take(take)
             .Skip(skip)
@@ -103,7 +103,7 @@ internal class WorkoutsService : IWorkoutsService
             new ResponseMetaData(
                 result.Count,
                 take,
-                usersWorkouts.Count()));
+                result.Count()));
     }
 
     /// <inheritdoc />
