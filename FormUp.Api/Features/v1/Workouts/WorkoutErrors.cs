@@ -25,7 +25,7 @@ public static class WorkoutErrors
     {
         return Error.NotFound(
             $"{FeaturePrefix}:UserNotFound",
-            $"User with Id {id} has no logged workouts."
+            $"User with Id {id} was not found."
         );
     }
 }
