@@ -27,7 +27,10 @@ internal class WorkoutsService : IWorkoutsService
         Guid id,
         CancellationToken cancellationToken = default)
     {
-        var workout = await _context.Workouts.FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
+        var workout = await _context.Workouts
+            .Include(w => w.Activities)
+            .FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
+
         if (workout is null)
         {
             _logger.LogError("Workout with ID {ID} was not found", id);
