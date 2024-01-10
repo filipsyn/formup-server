@@ -23,7 +23,7 @@ public record WorkoutInfo
     /// <summary>
     ///     Description of the workout.
     /// </summary>
-    public string Description { get; set; } = string.Empty;
+    public string? Description { get; set; }
 
     /// <summary>
     ///     Date and time when workout took place.
