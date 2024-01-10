@@ -29,6 +29,7 @@ internal class WorkoutsService : IWorkoutsService
     {
         var workout = await _context.Workouts
             .Include(w => w.Activities)
+            .ThenInclude(a => a.Exercise)
             .FirstOrDefaultAsync(w => w.Id == id, cancellationToken);
 
         if (workout is null)
