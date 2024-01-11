@@ -43,6 +43,18 @@ internal class ExercisesService : IExercisesService
                 e => nameof(e.Name),
                 language,
                 cancellationToken);
+
+            await _translationService.ApplyTranslation(
+                exercise,
+                e => nameof(e.NormalizedName),
+                language,
+                cancellationToken);
+
+            await _translationService.ApplyTranslation(
+                exercise,
+                e => nameof(e.Description),
+                language,
+                cancellationToken);
         }
 
         if (searchedName is not null)
