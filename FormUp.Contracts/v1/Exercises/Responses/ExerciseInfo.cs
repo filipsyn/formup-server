@@ -15,6 +15,8 @@ public record ExerciseInfo
     /// </summary>
     public required string Name { get; set; }
 
+    public required string NormalizedName { get; set; }
+
     public string? Description { get; set; }
 
     public string? ImageURL { get; set; }

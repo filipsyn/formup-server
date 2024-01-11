@@ -17,6 +17,7 @@ public static class ExerciseEntityMappingExtensions
         {
             Id = entity.Id,
             Name = entity.Name,
+            NormalizedName = entity.NormalizedName,
             Description = entity.Description,
             ImageURL = entity.ImageURL,
             VideoURL = entity.VideoURL
