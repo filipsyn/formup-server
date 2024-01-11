@@ -12,6 +12,8 @@ public class ExerciseEntity : BaseEntity
     /// </summary>
     public string Name { get; set; } = string.Empty;
 
+    public string NormalizedName { get; set; } = String.Empty;
+
     public string? Description { get; set; }
 
     public string? ImageURL { get; set; }
