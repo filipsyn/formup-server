@@ -13,6 +13,13 @@ public static class ExerciseEntityMappingExtensions
     /// </summary>
     public static ExerciseInfo ToExerciseInfo(this ExerciseEntity entity)
     {
-        return new ExerciseInfo { Id = entity.Id, Name = entity.Name, ImageURL = entity.ImageURL };
+        return new ExerciseInfo
+        {
+            Id = entity.Id,
+            Name = entity.Name,
+            Description = entity.Description,
+            ImageURL = entity.ImageURL,
+            VideoURL = entity.VideoURL
+        };
     }
 }
