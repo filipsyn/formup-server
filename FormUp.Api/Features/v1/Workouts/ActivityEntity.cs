@@ -18,6 +18,8 @@ public class ActivityEntity : BaseEntity
     /// </summary>
     public Guid ExerciseId { get; set; }
 
+    public WorkoutEntity Workout { get; set; }
+
     /// <summary>
     ///     ID of workout in which activity was performed.
     /// </summary>
