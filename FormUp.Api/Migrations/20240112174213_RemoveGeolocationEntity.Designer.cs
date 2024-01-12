@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FormUp.Api.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240112170619_AddWorkoutBackingFieldToActivity")]
-    partial class AddWorkoutBackingFieldToActivity
+    [Migration("20240112174213_RemoveGeolocationEntity")]
+    partial class RemoveGeolocationEntity
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,30 +24,6 @@ namespace FormUp.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("FormUp.Api.Common.Persistence.GeolocationEntity", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .HasColumnOrder(0);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("Latitude")
-                        .HasColumnType("float");
-
-                    b.Property<double>("Longitude")
-                        .HasColumnType("float");
-
-                    b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Geolocations");
-                });
 
             modelBuilder.Entity("FormUp.Api.Features.v1.Exercises.ExerciseEntity", b =>
                 {
@@ -86,91 +62,91 @@ namespace FormUp.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("acc3fe8d-c7c9-4bc4-88b9-6736ca4b26a0"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(390),
+                            Id = new Guid("ebc4c6aa-fe13-4a7d-8c8e-c0f1ccc0c70c"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2220),
                             Description = "exercises.squat.description",
                             ImageURL = "https://legionathletics.com/wp-content/uploads/2019/05/arnold-squat.jpg",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(390),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2220),
                             Name = "exercises.squat.name",
                             NormalizedName = "exercises.squat.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("813629e9-2ae8-4617-822e-5925bb098ccc"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(400),
+                            Id = new Guid("2a0e76a3-9fe8-4257-a248-ebb0e939dd0c"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2220),
                             Description = "exercises.dead-lift.description",
                             ImageURL = "https://miro.medium.com/v2/resize:fit:1024/0*UkQCo1eLsXjoXn4v.jpg",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(400),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2220),
                             Name = "exercises.dead-lift.name",
                             NormalizedName = "exercises.dead-lift.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("e56414dc-ef26-4f41-a5be-0be894a262d4"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(400),
+                            Id = new Guid("5cb97205-9e18-4fdc-b8d5-489983f60595"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2230),
                             Description = "exercises.shoulder-press.description",
                             ImageURL = "https://legionathletics.com/wp-content/uploads/2023/10/Dumbbell-Shoulder-Press-before-after.png",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(400),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2230),
                             Name = "exercises.shoulder-press.name",
                             NormalizedName = "exercises.shoulder-press.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("4ee2eeef-0cda-485b-9723-c45b90296130"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(410),
+                            Id = new Guid("c0c54c39-69eb-421e-ac62-b418a622647a"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2230),
                             Description = "exercises.pull-up.description",
                             ImageURL = "https://hips.hearstapps.com/hmg-prod/images/mh0418-fit-pul-01-1558551798.jpg?crop=0.749xw:1.00xh;0.251xw,0&resize=1200:*",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(410),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2230),
                             Name = "exercises.pull-up.name",
                             NormalizedName = "exercises.pull-up.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("494b12a8-3cdf-4db0-98bf-85e0cca8d3a4"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(410),
+                            Id = new Guid("888d4c00-f2cf-410f-8904-809c8ce88d3a"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2230),
                             Description = "exercises.dip.description",
                             ImageURL = "https://www.muscleandfitness.com/wp-content/uploads/2018/07/1109-dip.jpg?w=800&quality=86&strip=all",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(410),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2230),
                             Name = "exercises.dip.name",
                             NormalizedName = "exercises.dip.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("2239df6e-9146-410d-927a-a2368ad82188"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(410),
+                            Id = new Guid("33eab256-b60e-4636-9ae8-708b6939ce0c"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2240),
                             Description = "exercises.bench-press.description",
                             ImageURL = "https://caliberstrong.com/wp-content/uploads/2020/04/how-to-bench-press.jpg",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(410),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2240),
                             Name = "exercises.bench-press.name",
                             NormalizedName = "exercises.bench-press.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("42f77d86-1cfe-4f56-a9e7-744874c43dd4"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(420),
+                            Id = new Guid("514321a0-5d0d-4cfb-857f-6b8679fce0fe"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2240),
                             Description = "exercises.lunge.description",
                             ImageURL = "https://hortonbarbell.com/wp-content/uploads/2022/05/Dumbbell-Lunge.png",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(420),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2240),
                             Name = "exercises.lunge.name",
                             NormalizedName = "exercises.lunge.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("a11e442c-8d45-4002-9120-20db156fe687"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(420),
+                            Id = new Guid("3c5d332c-696e-4611-a592-cb13bb087401"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2240),
                             Description = "exercises.push-up.description",
                             ImageURL = "https://www.fitnesseducation.edu.au/wp-content/uploads/2017/03/Pushups.jpg",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(420),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2240),
                             Name = "exercises.push-up.name",
                             NormalizedName = "exercises.push-up.normalized-name"
                         },
                         new
                         {
-                            Id = new Guid("b9d4beb6-a758-4d8c-9448-dd8cd76d719b"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(420),
+                            Id = new Guid("8aa97653-ca11-4875-8e66-517b0f2f63fa"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2250),
                             Description = "exercises.curl.description",
                             ImageURL = "https://hortonbarbell.com/wp-content/uploads/2023/01/How-To-Do-Tempo-Bicep-Curls.png",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(420),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2250),
                             Name = "exercises.curl.name",
                             NormalizedName = "exercises.curl.normalized-name"
                         });
@@ -206,92 +182,92 @@ namespace FormUp.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("111efe1a-6e8f-4b03-8a1b-1d8d05f6ec5f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(820),
+                            Id = new Guid("4b97dd29-10f4-4d2b-8849-54102503e434"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2640),
                             Latitude = 49.178859520009325,
                             Longitude = 16.59588166754828,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(820),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2640),
                             Name = "Posilovna Velký Průvan"
                         },
                         new
                         {
-                            Id = new Guid("36963396-cc12-407f-91a1-212f22ba6775"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(830),
+                            Id = new Guid("ee0b7080-7fdc-48c3-a15c-3a6274daa266"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2650),
                             Latitude = 49.179083949535297,
                             Longitude = 16.596503940037902,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(830),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2650),
                             Name = "Posilovna Malý Průvan"
                         },
                         new
                         {
-                            Id = new Guid("d92482c1-8d06-4c28-addf-c6485509290f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(830),
+                            Id = new Guid("714924be-bbcd-4bb2-86d8-e3477eab393d"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2650),
                             Latitude = 49.177089060496634,
                             Longitude = 16.606190093594201,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(830),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2650),
                             Name = "AZ Fitness"
                         },
                         new
                         {
-                            Id = new Guid("851c1882-85b8-4259-bf1c-545db2487509"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(840),
+                            Id = new Guid("bea87b4f-6620-408c-bec7-cbdc677d2fd6"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2650),
                             Latitude = 49.181262112264804,
                             Longitude = 16.60282245697524,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(840),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2650),
                             Name = "NewPark Gym"
                         },
                         new
                         {
-                            Id = new Guid("b1f7c1c6-551f-4169-831b-92eb13da57d1"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(840),
+                            Id = new Guid("a3356ec3-32db-4f24-a71a-a81389f65823"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2660),
                             Latitude = 49.180330210607991,
                             Longitude = 16.606384581697789,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(840),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2660),
                             Name = "Energy Fitness Club"
                         },
                         new
                         {
-                            Id = new Guid("e8d0ab41-04e5-49e1-8595-2128b155efeb"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(840),
+                            Id = new Guid("26179dee-1502-4fe7-a8e3-a724aada497b"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2660),
                             Latitude = 49.215051402565855,
                             Longitude = 16.609402145470618,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(840),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2660),
                             Name = "Hulk Gym"
                         },
                         new
                         {
-                            Id = new Guid("21258a74-9d4d-4763-98e6-ad4c0e23739a"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(850),
+                            Id = new Guid("b87145da-4706-403e-9a49-744300b1a99a"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2660),
                             Latitude = 49.212976899683049,
                             Longitude = 16.609015907373617,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(850),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2660),
                             Name = "Fitness Boby"
                         },
                         new
                         {
-                            Id = new Guid("d2977ca2-4d25-4b50-919e-24d7cd716f5d"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(850),
+                            Id = new Guid("5f9c4a54-6d29-4a53-be86-2f4074e4a372"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2670),
                             Latitude = 49.218555432690493,
                             Longitude = 16.624250854578833,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(850),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2670),
                             Name = "Blackfield Gym"
                         },
                         new
                         {
-                            Id = new Guid("1b2a5d3b-a9a3-4947-addb-717a89ad29de"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(850),
+                            Id = new Guid("24be6dca-1ab2-4e3e-bb49-8bce3ef60096"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2670),
                             Latitude = 49.190492694739753,
                             Longitude = 16.617386769256324,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(850),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2670),
                             Name = "Form Factory Fitness Club Vlněna"
                         },
                         new
                         {
-                            Id = new Guid("fcc11923-4c76-4461-8184-0ab58c642568"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(860),
+                            Id = new Guid("11921590-5343-4584-9b94-c916c1ec2709"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2670),
                             Latitude = 49.208489226784764,
                             Longitude = 16.605422062883459,
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(860),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2670),
                             Name = "Form Factory Fitness Club Lužánky"
                         });
                 });
@@ -330,488 +306,488 @@ namespace FormUp.Api.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("66584d17-300a-4dac-9015-e39f5360c1f4"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(530),
+                            Id = new Guid("369f8fde-40c1-4afb-91a8-ee64cafdf701"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2370),
                             Key = "exercises.squat.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(530),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2370),
                             Value = "Squat"
                         },
                         new
                         {
-                            Id = new Guid("badd68f9-9cf5-45af-b27b-a629e862fb43"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(540),
+                            Id = new Guid("0eae7af6-b3e2-47c4-84fa-c2d463945995"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2370),
                             Key = "exercises.squat.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(540),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2370),
                             Value = "Dřep"
                         },
                         new
                         {
-                            Id = new Guid("1dc335f7-5a0f-4b2f-a51d-983c471fe76f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(540),
+                            Id = new Guid("201b7530-b784-4d71-a42b-2d92d288ac50"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2380),
                             Key = "exercises.squat.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(540),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2380),
                             Value = "SQUAT"
                         },
                         new
                         {
-                            Id = new Guid("19186a5c-6dcc-4df6-b31c-220fa1bc2564"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(540),
+                            Id = new Guid("d067c66d-4b4e-4966-97ee-c3d37752c82f"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2380),
                             Key = "exercises.squat.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(540),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2380),
                             Value = "DREP"
                         },
                         new
                         {
-                            Id = new Guid("e11cb572-65d3-4c87-ac51-a62b32cd16bb"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(550),
+                            Id = new Guid("2d958181-3461-498d-9129-5039fc74717b"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2390),
                             Key = "exercises.squat.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(550),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2390),
                             Value = "A fundamental lower body exercise targeting the legs, hamstrings, and glutes. Stand with feet shoulder-width apart, lower your body by bending your knees, and return to the starting position."
                         },
                         new
                         {
-                            Id = new Guid("4f234712-5172-41a7-a2fd-56bbceb72b18"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(550),
+                            Id = new Guid("2a021daa-4e28-4ddd-8112-a3158e5eb20e"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2390),
                             Key = "exercises.squat.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(550),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2390),
                             Value = "Dřep posiluje dolní část těla, především nohy, hamstrings a hýždě. Vykonává se stáním s váhou na ramenou a poklesem do pravého úhlu v kolenou."
                         },
                         new
                         {
-                            Id = new Guid("2918047d-b1ab-4052-9e76-b8b26c5180ee"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(550),
+                            Id = new Guid("c11973b5-6fc9-4a9b-816d-6a7f969e61bc"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2390),
                             Key = "exercises.dead-lift.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(550),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2390),
                             Value = "Dead-lift"
                         },
                         new
                         {
-                            Id = new Guid("01d9a2f7-c424-4739-88eb-57e61cae7d7c"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(560),
+                            Id = new Guid("d8abf6e6-bc1c-4cdf-b39f-7574e4fbaaa1"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2400),
                             Key = "exercises.dead-lift.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(560),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2400),
                             Value = "Mrtvý tah"
                         },
                         new
                         {
-                            Id = new Guid("99beba73-88b6-47cb-91ab-ec220308adb3"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(570),
+                            Id = new Guid("08c10cb8-8b3a-4932-85f0-0cb3726f0f52"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2400),
                             Key = "exercises.dead-lift.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(570),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2400),
                             Value = "DEADLIFT"
                         },
                         new
                         {
-                            Id = new Guid("49ea0ee3-30ea-4f26-8e96-a07bfcbf3c2f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(570),
+                            Id = new Guid("28b30fc1-5beb-4133-a4c1-6eb1b76619d6"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2400),
                             Key = "exercises.dead-lift.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(570),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2400),
                             Value = "MRTVYTAH"
                         },
                         new
                         {
-                            Id = new Guid("8cbdf6a7-5e8b-43bf-a2fa-ea9a1edba144"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(570),
+                            Id = new Guid("c6ba98e8-d907-4e67-a56e-57f5a5b92bb0"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2410),
                             Key = "exercises.dead-lift.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(570),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2410),
                             Value = "A compound exercise for overall strength, focusing on the back, glutes, hamstrings, and lower back. Start with the weight on the ground, hinge at the hips, lift the weight by straightening your hips and knees."
                         },
                         new
                         {
-                            Id = new Guid("0300b9f3-ea58-4a0d-a8f0-7a769919a5ed"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(580),
+                            Id = new Guid("c44d3c9c-7871-41d8-aefe-b4ad525822cc"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2410),
                             Key = "exercises.dead-lift.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(580),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2410),
                             Value = "Mrtvý tah je cvik na posílení zad, hýždí a hamstringů, provedený ohnutím v pase a zdvihem váhy z podlahy s udržením rovné páteře."
                         },
                         new
                         {
-                            Id = new Guid("fb87cd90-294f-4460-892a-23749429d02f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(580),
+                            Id = new Guid("ae78df6c-9c2a-43e5-92af-bd835d34e392"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2410),
                             Key = "exercises.shoulder-press.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(580),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2410),
                             Value = "Shoulder press"
                         },
                         new
                         {
-                            Id = new Guid("92e5d0b2-832d-4ee5-bf0b-8019890e6e06"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(580),
+                            Id = new Guid("dd90983d-0f7e-4249-9a2a-a62043b0478b"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2420),
                             Key = "exercises.shoulder-press.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(580),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2420),
                             Value = "Tlak na ramena"
                         },
                         new
                         {
-                            Id = new Guid("27ca5a63-2eab-4954-86c3-f4f8d5fac004"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(590),
+                            Id = new Guid("e6289d08-c06b-4d1e-ac0c-35b909feaa1a"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2420),
                             Key = "exercises.shoulder-press.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(590),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2420),
                             Value = "SHOULDERPRESS"
                         },
                         new
                         {
-                            Id = new Guid("78e3701b-5513-4895-9db7-da92b97f481f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(590),
+                            Id = new Guid("be5f8ad5-9286-4636-a7c2-b7f184520ba4"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2420),
                             Key = "exercises.shoulder-press.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(590),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2420),
                             Value = "TLAKNARAMENA"
                         },
                         new
                         {
-                            Id = new Guid("cce34cb2-52fb-408e-b95f-e3017a7938fc"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(600),
+                            Id = new Guid("bb668781-8f2b-402f-a357-f9984a225c61"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2430),
                             Key = "exercises.shoulder-press.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(600),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2430),
                             Value = "An upper body exercise concentrating on shoulder muscles. Whether sitting or standing, press weights or other resistance overhead, emphasizing controlled movements."
                         },
                         new
                         {
-                            Id = new Guid("28f18054-609d-40b3-af46-3b9da83f21f3"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(600),
+                            Id = new Guid("dc26ce0e-557a-4b71-83cc-e05b27bfc2ef"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2430),
                             Key = "exercises.shoulder-press.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(600),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2430),
                             Value = "Tlaky na ramena zaměřují se na posílení ramenních svalů a vykonávají se tlačením činek nad hlavu."
                         },
                         new
                         {
-                            Id = new Guid("fa692408-d6f3-4560-a9dd-b17c30d975b0"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(600),
+                            Id = new Guid("a16a04ea-d22b-4041-a463-92a9ceef8b20"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2430),
                             Key = "exercises.pull-up.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(600),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2430),
                             Value = "Pull up"
                         },
                         new
                         {
-                            Id = new Guid("7a07d80e-9823-4b68-8522-24b6d2cf8596"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(610),
+                            Id = new Guid("fe2bc350-e7a0-41c3-98ac-3413236317ff"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2440),
                             Key = "exercises.pull-up.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(610),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2440),
                             Value = "Shyb"
                         },
                         new
                         {
-                            Id = new Guid("09a3ab29-75d0-4930-89f7-13e7c1f1e1ec"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(610),
+                            Id = new Guid("39b355cc-d43d-4e9d-bd5c-4bb725a961c3"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2440),
                             Key = "exercises.pull-up.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(610),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2440),
                             Value = "PULLUP"
                         },
                         new
                         {
-                            Id = new Guid("7adefe10-d4ae-4603-9870-f82152156445"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(610),
+                            Id = new Guid("79f3b8e9-2776-4093-812d-9c2ad89acbf2"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2440),
                             Key = "exercises.pull-up.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(610),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2440),
                             Value = "SHYB"
                         },
                         new
                         {
-                            Id = new Guid("050a56c9-44a1-4072-a53d-eeaa803c68ce"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(620),
+                            Id = new Guid("4af29b43-e24a-4e1c-a904-265dcf05d1f7"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2450),
                             Key = "exercises.pull-up.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(620),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2450),
                             Value = "An effective upper body exercise primarily targeting the back and biceps. Hang from a bar with palms facing away, pull your body up until your chin passes the bar, and lower back down."
                         },
                         new
                         {
-                            Id = new Guid("90e75daf-787b-49d5-8337-6f21e117660f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(620),
+                            Id = new Guid("bce3da81-fe47-4dc4-b04e-4b4309d09165"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2450),
                             Key = "exercises.pull-up.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(620),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2450),
                             Value = "Shyb je izolovaný cvik pro tricepsy, provádí se zvedáním váhy pomocí prodloužení paže."
                         },
                         new
                         {
-                            Id = new Guid("7e8f13a3-7bc5-47c3-8035-127f469d3fb3"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(630),
+                            Id = new Guid("31e92d13-aa34-460c-8835-427cc10a43d9"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2450),
                             Key = "exercises.dip.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(630),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2450),
                             Value = "Dip"
                         },
                         new
                         {
-                            Id = new Guid("c603e24a-9e7d-40ab-8b56-753fcc8a78c7"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(630),
+                            Id = new Guid("ab09082e-16c3-4a5b-8546-1390d06f459d"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2460),
                             Key = "exercises.dip.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(630),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2460),
                             Value = "Klik na bradlech"
                         },
                         new
                         {
-                            Id = new Guid("8342aaea-6262-4c56-bf27-5e75aed0f6e7"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(630),
+                            Id = new Guid("96647b23-c657-44b0-a4c2-09c9ad98a879"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2460),
                             Key = "exercises.dip.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(630),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2460),
                             Value = "DIP"
                         },
                         new
                         {
-                            Id = new Guid("78b56ab6-8490-4940-8b4d-e2e16d505c40"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(640),
+                            Id = new Guid("9a384f16-736b-485a-9e9c-84f0433b3d8d"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Key = "exercises.dip.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(640),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Value = "KLIKNABRADLECH"
                         },
                         new
                         {
-                            Id = new Guid("632f3e5a-f037-43fa-8639-4d83048aec88"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(640),
+                            Id = new Guid("70922f74-f991-4457-a476-7599b30478ce"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Key = "exercises.dip.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(640),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Value = "An isolation exercise for the triceps and chest. Support yourself on parallel bars, lower your body by bending your elbows, and push back up."
                         },
                         new
                         {
-                            Id = new Guid("ed9449da-626a-4710-bc68-8a5e94902ff8"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(640),
+                            Id = new Guid("6bb28e4b-8e7b-452c-aae9-002063fac5b5"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Key = "exercises.dip.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(640),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Value = "Kliky na bradlech posilují horní část těla, zejména hrudník, tricepsy a deltové svaly."
                         },
                         new
                         {
-                            Id = new Guid("1fb4a00a-2ce0-4f23-a162-4382d370ddfb"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(650),
+                            Id = new Guid("8e081f4c-9ab2-4e02-b900-504d419ba5b8"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Key = "exercises.bench-press.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(650),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2470),
                             Value = "Bench press"
                         },
                         new
                         {
-                            Id = new Guid("be56bbc7-2228-40dc-a158-e635fffdda82"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(650),
+                            Id = new Guid("1e0dfc24-4439-493a-948d-b35a37f3d51b"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2480),
                             Key = "exercises.bench-press.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(650),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2480),
                             Value = "Bench press"
                         },
                         new
                         {
-                            Id = new Guid("d31dfa2e-edd7-429a-8f27-45722fed1cca"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(660),
+                            Id = new Guid("56c31c65-bf72-4e37-a8e7-d9c588ea2579"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2480),
                             Key = "exercises.bench-press.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(660),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2480),
                             Value = "BENCHPRESS"
                         },
                         new
                         {
-                            Id = new Guid("4d7d70cc-6847-436c-9141-d7725af2dd7d"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(660),
+                            Id = new Guid("1ec6665d-590c-4ca1-988c-c8d95bc1aac0"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2490),
                             Key = "exercises.bench-press.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(660),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2490),
                             Value = "BENCHPRESS"
                         },
                         new
                         {
-                            Id = new Guid("4c062ff2-5729-4be9-ac86-398c3bce09b1"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(660),
+                            Id = new Guid("4688fbb1-18d8-47b2-af3b-d919e4060f7d"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2490),
                             Key = "exercises.bench-press.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(660),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2490),
                             Value = "A classic chest exercise focusing on the pectoral muscles. Lie on a bench, lower and lift a barbell or dumbbells to and from your chest."
                         },
                         new
                         {
-                            Id = new Guid("ea130353-f8fa-4aa7-b434-ce13111c4642"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(670),
+                            Id = new Guid("22d7f88f-ffce-4a94-823b-cfdc0779b6ee"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2490),
                             Key = "exercises.bench-press.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(670),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2490),
                             Value = "Bench-press je klasický cvik pro posílení hrudníku, tricepse a delt. "
                         },
                         new
                         {
-                            Id = new Guid("3e7c55a0-1137-48b7-b0c9-7e3a0f1dad0a"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(670),
+                            Id = new Guid("c38c015c-2933-40e5-9f62-4a522aa6c6cc"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2490),
                             Key = "exercises.lunge.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(670),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2500),
                             Value = "Lunge"
                         },
                         new
                         {
-                            Id = new Guid("f0fb793f-043e-4a98-b8c0-979df4fd2a1d"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(670),
+                            Id = new Guid("7803a748-208f-498c-8a46-633b17b7c742"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2500),
                             Key = "exercises.lunge.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(670),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2500),
                             Value = "Výpad"
                         },
                         new
                         {
-                            Id = new Guid("d3ef5b53-a133-4a2b-a117-b59fae2f4a8b"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(680),
+                            Id = new Guid("b05d3652-edc4-4d82-8e9e-500f036e1574"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2500),
                             Key = "exercises.lunge.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(680),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2500),
                             Value = "LUNGE"
                         },
                         new
                         {
-                            Id = new Guid("2bc30fd7-22dc-4bbe-8a8d-b496326a1951"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(680),
+                            Id = new Guid("4b6332f5-de73-47b0-857c-55d147ee4c44"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2510),
                             Key = "exercises.lunge.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(680),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2510),
                             Value = "VYPAD"
                         },
                         new
                         {
-                            Id = new Guid("1e76e74b-9696-4fdb-ac7e-403e64c1688a"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(680),
+                            Id = new Guid("47aacc71-9c5c-4396-8cef-b4e37b4b0c07"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2510),
                             Key = "exercises.lunge.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(680),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2510),
                             Value = "A lower body exercise targeting the legs and glutes. Take a step forward with one leg, lower your body until both knees form right angles, then return to the starting position."
                         },
                         new
                         {
-                            Id = new Guid("c79e4073-0c22-49af-bd3c-3aca311114dc"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(690),
+                            Id = new Guid("89e64ff6-d0d3-4e13-b177-6e6a441a6531"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2510),
                             Key = "exercises.lunge.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(690),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2510),
                             Value = "Výpad je cvik na dolní část těla, střídavým krokem dopředu a poklesem kolena k zemi."
                         },
                         new
                         {
-                            Id = new Guid("4edd962f-f6c2-4625-a172-5f81f8668ddb"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(690),
+                            Id = new Guid("a3a59ae6-2479-4c97-b78d-70d9ba4b708d"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2520),
                             Key = "exercises.push-up.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(690),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2520),
                             Value = "Push up"
                         },
                         new
                         {
-                            Id = new Guid("a0016462-8240-4dbe-bf22-65e6fc7c47ff"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(700),
+                            Id = new Guid("e5711465-7973-4c66-ba58-c0f6159c745d"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2520),
                             Key = "exercises.push-up.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(700),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2520),
                             Value = "Klik"
                         },
                         new
                         {
-                            Id = new Guid("fd94178d-365a-4d37-9b1c-c42525438fdd"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(700),
+                            Id = new Guid("a8f2b9cb-c9d3-4e49-a204-1986d7e55442"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2520),
                             Key = "exercises.push-up.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(700),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2520),
                             Value = "PUSHUP"
                         },
                         new
                         {
-                            Id = new Guid("f93acc8c-3477-4045-bc2a-152f2ac10403"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(700),
+                            Id = new Guid("ef50e405-89e6-4343-b1a2-a6e1a298a642"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2530),
                             Key = "exercises.push-up.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(700),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2530),
                             Value = "KLIK"
                         },
                         new
                         {
-                            Id = new Guid("9ccc66af-b0b4-4891-823c-1ebf7fa356fc"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(710),
+                            Id = new Guid("b718b5fe-e32c-4a19-85d9-e8a2945ce2d5"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2530),
                             Key = "exercises.push-up.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(710),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2530),
                             Value = "A versatile exercise engaging the chest, shoulders, and triceps. Start in a plank position, lower your body to the ground, and push back up."
                         },
                         new
                         {
-                            Id = new Guid("670e641a-986c-4a4a-a801-8dbfa3d2aabd"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(710),
+                            Id = new Guid("7d210988-6868-46de-8ebe-83d1c051a144"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2530),
                             Key = "exercises.push-up.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(710),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2530),
                             Value = "Kliky jsou cvik na posílení horní části těla, zvláště hrudníku, tricepsů a deltových svalů. Provádí se opakováním zvedání a spouštění těla, kdy se opíráte o ruce na zemi a tlačíte se nahoru a dolů."
                         },
                         new
                         {
-                            Id = new Guid("e6719f8d-ba13-4433-ace7-b660f53c7481"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(710),
+                            Id = new Guid("f1895f23-cb15-4439-aa0a-1bf4963464b7"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2540),
                             Key = "exercises.curl.name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(710),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2540),
                             Value = "Bicep curl"
                         },
                         new
                         {
-                            Id = new Guid("8907921d-3237-4370-9336-ac22e3207c5f"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(720),
+                            Id = new Guid("440a2c65-497e-457a-827b-e141e3859acf"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2540),
                             Key = "exercises.curl.name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(720),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2540),
                             Value = "Bicepsový zdvih"
                         },
                         new
                         {
-                            Id = new Guid("fa0928f6-bc29-42af-a6ea-f48061f5c3a8"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(720),
+                            Id = new Guid("84620e58-4de4-48d3-92d1-01bceb1efe36"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2550),
                             Key = "exercises.curl.normalized-name",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(720),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2550),
                             Value = "BICEPCURL"
                         },
                         new
                         {
-                            Id = new Guid("30e276b3-23bb-4829-89b9-1b90519df263"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(720),
+                            Id = new Guid("1d07f874-1c66-418b-ac4e-43a7a756ead4"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2550),
                             Key = "exercises.curl.normalized-name",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(720),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2550),
                             Value = "BICEPSOVYZDVIH"
                         },
                         new
                         {
-                            Id = new Guid("09dc677a-6f66-4a7a-8604-54a5c88bfcc3"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(730),
+                            Id = new Guid("9302ba8e-7311-4efe-a22f-5ee11cd2f22f"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2550),
                             Key = "exercises.curl.description",
                             Locale = "en",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(730),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2550),
                             Value = "An isolation exercise for the biceps. Stand with weights in hand, palms facing forward, and curl the weights towards your shoulders by bending at the elbows."
                         },
                         new
                         {
-                            Id = new Guid("30c46a63-399c-445f-a048-057a59da9a51"),
-                            CreatedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(730),
+                            Id = new Guid("2e8c3810-1f95-4815-aef2-da0c9a94ecd1"),
+                            CreatedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2560),
                             Key = "exercises.curl.description",
                             Locale = "cs",
-                            ModifiedAt = new DateTime(2024, 1, 12, 17, 6, 19, 81, DateTimeKind.Utc).AddTicks(730),
+                            ModifiedAt = new DateTime(2024, 1, 12, 17, 42, 12, 780, DateTimeKind.Utc).AddTicks(2560),
                             Value = "Bicepsový zdvih cílí na posílení bicepsů a vykonává se zdvihem váhy směrem k ramenům při ohnutí v loktech."
                         });
                 });
